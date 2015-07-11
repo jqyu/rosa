@@ -1,0 +1,41 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	outline: 0px;
+	border: none;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	font-size: 14px;
+	line-height: 24px;
+	font-family: 'Libre Baskerville', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.4em;
+}
+
+h4 {
+	line-height: 24px;
+	font-size: 14px;
+}
+
+/************************
+ * N A V I G A T I O N
+ */
+
+#site-header {
+	padding: 24px;
+}
+
+#logo {
+	padding: 24px;
+}
