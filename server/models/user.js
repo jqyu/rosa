@@ -2,7 +2,7 @@ var mongoose		= require('mongoose'),
 	crypto			= require('crypto');
 
 var UserSchema = new mongoose.Schema({
-	username: { type: String, unique: true, required: true },
+	username: { type: String, match: /^[a-z0-9_-]{3,16}$/, unique: true, required: true },
 	hashedPassword: String,
 	salt: String,
 	// roles:
@@ -55,10 +55,10 @@ UserSchema
 		}
 		// validates password for a new user
 		if(!validatePassword(this.password)) {
-			next(new Error('Empty password'));
-		} else {
-			next();
+			return next(new Error('Empty password'));
 		}
+		next();
+		
 	});
 
 // methods ===============================

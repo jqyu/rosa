@@ -8,6 +8,10 @@ angular.module('rosaApp', [
 			templateUrl: 'views/partials/home.html',
 			controller: 'MainCtrl'
 		})
+		.when('/login', {
+			templateUrl: 'views/partials/login.html',
+			controller: 'LoginCtrl'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

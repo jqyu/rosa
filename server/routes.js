@@ -1,32 +1,37 @@
 // modules
-var path = require('path');
+var path = require('path'),
+	auth = require('./config/auth');
 
-// controllers
 
 module.exports = function(app) {
 
 	// server routes ================================
-	// handles api calls and authentication routes
-/*
-	app.get('/api/test', function(req, res) {
-		Test.find(function(err, tests) {
-			if (err)
-				res.send(err);
-			res.json(tests);
-		});
-	});	
 
-	app.get('/api/test-post', function(req, res) {
-		var test = Test({ name: 'this is my test !!' });
-		test.save(function (err) {
-			if (err)
-				console.log('you fuckin shit');
-			console.log('woop woop woop !!!');
-		});
-		res.send(200);
-	});
-*/
+	// authentication routes
+	
+	var users = require('./controllers/users');
+	// sign up
+	app.post('/auth/users', users.create);
+	// find user
+	app.get('/auth/users/:username', users.show);
+	// check if user exists
+	app.get('/auth/users/:username/exists', users.exists);
+	// test endpoint that lists all users
+	app.get('/auth/users/test', users.test);
 
+	var session = require('./controllers/session');
+
+	// session endpoints 
+	app.route('/auth/session')
+		// get current session
+		.get(auth.ensureAuthenticated, session.session)
+		// log in (create new session)
+		.post(session.login)
+		// log out (delete current session)
+		.delete(session.logout);
+
+	// api calls
+	
 	// frontend routes ==============================
 	// route to handle all angular requests
 	app.get('*', function(req, res) {

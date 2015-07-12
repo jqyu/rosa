@@ -11,7 +11,7 @@ var express			= require('express'),
 // configs ==========================================
 
 // config files
-var config = require('./server/config/environment');
+var config = require('./config/environment');
 
 // set our port
 var port = process.env.PORT || 8080;
@@ -19,14 +19,20 @@ var port = process.env.PORT || 8080;
 // connect to our mongoDB database
 mongoose.connect(config.db.url);
 
-// configure passport middleware
-require('./server/config/pass');
-
-// express configs 
+// use bodyparser to get nice inputs 
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
-app.use(bodyParser.urlencoded({ extended: true })); 
-app.use(methodOverride('X-HTTP-Method-Override')); 
+app.use(bodyParser.urlencoded({ extended: true }));
+// use method override for http header workarounds
+app.use(methodOverride('X-HTTP-Method-Override'));
+// enable cookie support
+
+// enable session support
+
+// configure passport middleware
+require('./server/config/pass');
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
 
