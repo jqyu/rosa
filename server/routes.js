@@ -2,13 +2,12 @@
 var path = require('path');
 
 // controllers
-var Test = require('./models/test');
 
 module.exports = function(app) {
 
 	// server routes ================================
 	// handles api calls and authentication routes
-
+/*
 	app.get('/api/test', function(req, res) {
 		Test.find(function(err, tests) {
 			if (err)
@@ -26,7 +25,7 @@ module.exports = function(app) {
 		});
 		res.send(200);
 	});
-
+*/
 
 	// frontend routes ==============================
 	// route to handle all angular requests

@@ -1,29 +1,16 @@
 angular.module('rosaApp', [
-	'MainCtrl',
-	'ui.router'
+	'ngRoute'
 ])
-.run([       '$rootScope', '$state', '$stateParams',
-	function( $rootScope ,  $state ,  $stateParams ) {
-		$rootScope.$state = $state;
-		$rootScope.$stateParams = $stateParams;
-	}	
-])
-.config([    '$stateProvider', '$urlRouterProvider',
-	function( $stateProvider ,  $urlRouterProvider ) {
-		
-		// Redirects
-		
-		$urlRouterProvider
-			// redirect 404s to home state
-			.otherwise('/');
+.config(function ($routeProvider, $locationProvider) {
+	
+	$routeProvider
+		.when('/', {
+			templateUrl: 'views/partials/home.html',
+			controller: 'MainCtrl'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
 
-		// State configs
-		
-		$stateProvider
-			// home state
-			.state('home', {
-				url: '/',
-				templateUrl: 'views/partials/home.html'
-			});
-	}
-]);
+	$locationProvider.html5Mode(true);	
+});
