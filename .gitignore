@@ -1,6 +1,5 @@
 # dependencies
 /node_modules
-/bower_components
 
 # temporary files
 *.log
@@ -8,3 +7,6 @@
 # vim temporary files 
 .*.swp
 .*.swo
+
+# misc
+.DS_Store
