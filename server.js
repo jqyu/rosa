@@ -3,6 +3,9 @@
 // modules ===========================================
 var express			= require('express'),
 	app				= express(),
+	cookieParser	= require('cookie-parser'),
+	session			= require('express-session'),
+	MongoStore		= require('connect-mongo')(session);
 	passport		= require('passport'),
 	mongoose		= require('mongoose'),
 	bodyParser		= require('body-parser'),
@@ -26,8 +29,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // use method override for http header workarounds
 app.use(methodOverride('X-HTTP-Method-Override'));
 // enable cookie support
-
+app.use(cookieParser());
 // enable session support
+app.use(session({
+	resave: true,
+	saveUninitialized: false,
+	secret: config.session.secret,
+	store: new MongoStore({
+		url: config.db.url,
+		collection: 'sessions'
+	})
+}));
 
 // configure passport middleware
 require('./server/config/pass');

@@ -1,6 +1,9 @@
 # dependencies
 /node_modules
 
+# secret configs
+/config/environment.js
+
 # temporary files
 *.log
 
