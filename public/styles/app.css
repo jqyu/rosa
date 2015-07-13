@@ -3,6 +3,7 @@
 	padding: 0px;
 	outline: 0px;
 	border: none;
+	transition: all 0.2s ease;
 }
 
 html {
@@ -27,6 +28,88 @@ h4 {
 	line-height: 24px;
 	font-size: 14px;
 }
+
+/*************************
+ * F O R M S
+ */
+
+form {
+	max-width: 432px;
+	padding: 24px;
+	margin: 0px auto;
+}
+
+form h5 {
+	font-size: 12px;
+	line-height: 36px;
+	margin: 0px 0px 24px;
+	text-align: center;
+}
+
+label {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.5em;
+	color: #999;
+}
+
+label .input-label {
+	float: left;
+}
+
+label .input-validation {
+	float: right;
+	color: #ddd;
+}
+
+input,
+textarea,
+button {
+	display: block;
+}
+
+input {
+	width: 100%;
+	clear: both;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 16px;
+	line-height: 48px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 23px;
+	color: #999;
+}
+
+input:hover {
+	border-color: #ccc;
+	color: #666;
+}
+
+input:focus {
+	border-color: #4EF;
+	color: #333;
+}
+
+button {
+	cursor: pointer;
+	width: 100%;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid #333;
+	color: #333;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	line-height: 46px;
+	text-transform: uppercase;
+	letter-spacing: 0.5em;
+}
+button:hover {
+	background-color: #4EF;
+	border-color: #4EF;
+	color: #FFF;
+}
+	
+
 
 /************************
  * N A V I G A T I O N

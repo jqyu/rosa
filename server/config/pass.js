@@ -3,7 +3,6 @@ var	passport		= require('passport'),
 	User			= require('../models/user');
 
 //  serialize/deserialize session
-//	TODO: figure out a more secure way of doing this, secretToken?
 
 passport.serializeUser(function(user, done) {
 	done(null, user.id);
