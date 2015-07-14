@@ -25,8 +25,18 @@ UserSchema
 		this.salt			= crypto.randomBytes(16).toString('base64');
 		this.hashedPassword = this.encryptPassword(password);
 	})
-	.get(function(password) {
+	.get(function() {
 		return this._password;
+	});
+
+UserSchema
+	.virtual('info')
+	.get(function() {
+		return {
+			'_id':		this._id,
+			'username':	this.username,
+			'role':		this.role
+		};
 	});
 
 // validations ===========================

@@ -2,7 +2,7 @@ var passport		= require('passport');
 
 // returns current authenticated session
 module.exports.session = function (req, res) {
-	res.json(req.user);
+	res.json(req.user.info);
 }
 
 // logs out current authenticated session, returns nothing
@@ -26,7 +26,7 @@ module.exports.login = function (req, res, next) {
 			if (err) {
 				return res.send(err);
 			}
-			res.json(req.user);
+			res.json(req.user.info);
 		});
 	})(req, res, next);
 }

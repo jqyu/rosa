@@ -24,14 +24,14 @@ passport.use(new LocalStrategy(
 			if (!user) {
 				return done(null, false, {
 					'errors': {
-						'username': 'Email is not registered'
+						'username': 'not registered' 
 					}
 				});
 			}
 			if (!user.authenticate(password)) {
 				return done(null, false, {
 					'errors': {
-						'password': 'Password is incorrect'
+						'password': 'incorrect'
 					}
 				});
 			}

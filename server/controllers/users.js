@@ -18,21 +18,20 @@ module.exports.create = function (req, res, next) {
 		}
 		req.logIn(newUser, function(err) {
 			if (err) return next(err);
-			// TODO: replace newUser with newUser.user_info
-			return res.json(newUser);
+			return res.json(newUser.info);
 		});
 	});
 };
 
 module.exports.show = function (req, res, next) {
-	var username = req.params.username.toLowerCase();
+	var id = req.params.username.toLowerCase();
 
 	User.findOne({ username: username }, function (err, user) {
 		if (err) {
 			return next(new Error('Failed to load User: ' + username));
 		}
 		if (user) {
-			res.json(user);
+			res.json(user.info);
 		} else {
 			res.status(404).send('User not found');
 		}
@@ -49,12 +48,3 @@ module.exports.exists = function (req, res, next) {
 		res.send({ exists: !!user });
 	});
 };
-
-module.exports.test = function(req, res, next) {
-	User.find(function(err, users) {
-		if (err) {
-			res.send(err);
-		}
-		res.json(users);
-	});
-}

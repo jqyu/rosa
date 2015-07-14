@@ -12,12 +12,8 @@ module.exports = function(app) {
 	var users = require('./controllers/users');
 	// sign up
 	app.post('/auth/users', users.create);
-	// find user
-	app.get('/auth/users/:username', users.show);
 	// check if user exists
 	app.get('/auth/users/:username/exists', users.exists);
-	// test endpoint that lists all users
-	app.get('/auth/users/test', users.test);
 
 	var session = require('./controllers/session');
 
@@ -32,9 +28,19 @@ module.exports = function(app) {
 
 	// api calls
 	
+	// get user by username 
+	app.route('api/users/:username')
+		.get(users.show);
+	
 	// frontend routes ==============================
 	// route to handle all angular requests
 	app.get('*', function(req, res) {
+
+		// initialize angular cookie store
+		if(req.user) {
+			res.cookie('user', JSON.stringify(req.user.info));
+		}
+
 		// load our public/index.html file
 		res.sendFile('views/index.html', { root: path.join(__dirname, '../public') });
 	});

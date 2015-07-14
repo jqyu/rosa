@@ -1,0 +1,36 @@
+#site-header {
+	padding: 24px 0px;
+	height: 94px;
+}
+
+#logo {
+	padding: 24px;
+	float: left;
+	text-align: center;
+}
+
+#user-info,
+#user-login {
+	padding: 24px;
+	float: right;
+	text-align: right;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+}
+
+
+@media (min-width: 528px) {
+
+	#logo {
+		padding: 24px 48px;
+	}
+
+	#user-info,
+	#user-login {
+		padding: 24px 48px;
+	}
+
+}
+	

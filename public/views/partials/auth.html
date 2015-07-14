@@ -1,0 +1,94 @@
+<div id="auth-forms"
+	 class="show-{{activeForm}}">
+	<form id="login-form"
+		name="loginForm"
+		ng-submit="login(loginForm)">
+		<h5 ng-click="changeForm('login')">
+			Login as an existing user
+		</h5>
+
+		<label>
+			<div class="input-label">
+				username
+			</div>
+			<div class="input-validation error"
+				 ng-bind="loginForm.errors.username">
+			</div>
+			<input type="text" ng-model="loginForm.user.username">
+		</labeL>
+
+		<label>
+			<div class="input-label">
+				password
+			</div>
+			<div class="input-validation error"
+				 ng-bind="loginForm.errors.password">
+			</div>
+			<input type="password" ng-model="loginForm.user.password">
+		</label>
+
+		<button type="submit"
+				ng-disabled="isLoggingIn"
+				ng-bind="isLoggingIn ? 'Logging in...' : 'Log in'">
+		</button>
+	
+	</form>
+
+	<!-- TODO: clean up code with directives -->
+	<form id="signup-form"
+		name="signupForm"
+		ng-submit="signup(signupForm)">
+	
+		<h5 ng-click="changeForm('signup')">
+			Create a new account
+		</h5>
+
+		<label>
+			<div class="input-label">
+				username
+			</div>
+			<div class="input-validation"
+				ng-class="{ 'error': signupForm.errors.username, 'success': signupForm.validations.username}"
+				ng-bind="signupForm.errors.username || signupForm.validations.username || signupForm.checking ">
+			</div>
+			<input type="text"
+				   ng-model="signupForm.user.username"
+				   ng-model-options="{ debounce: 400 }"
+				   ng-change="validateUsername(signupForm)"
+				   ng-keyup="resetUsernameValidations(signupForm)">
+		</label>
+
+		<label>
+			<div class="input-label">
+				password
+			</div>
+			<div class="input-validation"
+				 ng-class="{ 'error': signupForm.errors.password, 'success': signupForm.validations.password }"
+				 ng-bind="signupForm.errors.password || signupForm.validations.password">
+			</div>
+			<input type="password"
+				   ng-model="signupForm.user.password"
+				   ng-change="validatePassword(signupForm)">
+		</label>
+
+		<label>
+			<div class="input-label">
+				confirm password
+			</div>
+			<div class="input-validation"
+				 ng-class="{ 'error': signupForm.errors.passwordConfirm, 'success': signupForm.validations.passwordConfirm }"
+				 ng-bind="signupForm.errors.passwordConfirm || signupForm.validations.passwordConfirm">
+			</div>
+			<input type="password"
+			       ng-model="signupForm.user.passwordConfirm"
+				   ng-change="validatePasswordConfirm(signupForm)">
+		</label>
+
+		<button type="submit"
+				ng-disabled="!signupForm.validations.username || !signupForm.validations.password || !signupForm.validations.passwordConfirm || isSigningUp"
+				ng-bind="isSigningUp ? 'Registering...' : 'Sign up'">
+		</button>
+	
+	</form>
+
+</div>

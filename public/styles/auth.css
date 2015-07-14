@@ -1,28 +1,28 @@
-#login-forms h5 {
+#auth-forms h5 {
 	cursor: pointer;
 }
 
-#login-forms h5:hover {
+#auth-forms h5:hover {
 	color: #4EF;
 }
 
-#login-forms form {
+#auth-forms form {
    overflow: hidden;
 }
 
-#login-forms #login-form {
+#login-form {
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 48px;
 	max-height: 11px;
 }
-#login-forms.show-login #login-form {
+.show-login #login-form {
 	max-height: 359px;
 }
 
-#login-forms #signup-form {
+#signup-form {
 	max-height: 36px;
 }
-#login-forms.show-signup #signup-form {
+.show-signup #signup-form {
 	max-height: 408px;
 }
 

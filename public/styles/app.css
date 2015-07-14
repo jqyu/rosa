@@ -16,17 +16,43 @@ body {
 	font-size: 14px;
 	line-height: 24px;
 	font-family: 'Libre Baskerville', serif;
+	background-color: #fff;
+	color: #444;
+}
+
+a {
+	color: #666;
+}
+a:hover {
+	color: #4EF;
+	text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 0.4em;
+	color: #333;
 }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: #333;
+	text-decoration: none;
+}	
 
 h4 {
 	line-height: 24px;
 	font-size: 14px;
+}
+
+.success,
+.input-validation.success {
+	color: #9F6;
+}
+
+.error,
+.input-validation.error {
+	color: #F66;
 }
 
 /*************************
@@ -41,8 +67,7 @@ form {
 
 form h5 {
 	font-size: 12px;
-	line-height: 36px;
-	margin: 0px 0px 24px;
+	margin: 0px 0px 36px;
 	text-align: center;
 }
 
@@ -60,6 +85,7 @@ label .input-label {
 
 label .input-validation {
 	float: right;
+	letter-spacing: 0.2em;
 	color: #ddd;
 }
 
@@ -77,17 +103,14 @@ input {
 	line-height: 48px;
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 23px;
-	color: #999;
 }
 
 input:hover {
-	border-color: #ccc;
-	color: #666;
+	border-color: #999;
 }
 
 input:focus {
 	border-color: #4EF;
-	color: #333;
 }
 
 button {
@@ -103,22 +126,26 @@ button {
 	text-transform: uppercase;
 	letter-spacing: 0.5em;
 }
+
 button:hover {
 	background-color: #4EF;
 	border-color: #4EF;
-	color: #FFF;
-}
-	
-
-
-/************************
- * N A V I G A T I O N
- */
-
-#site-header {
-	padding: 24px;
+	color: #fff;
 }
 
-#logo {
-	padding: 24px;
+button:disabled {
+	cursor: not-allowed;
+	color: #ddd;
+	border-color: #ddd;
+	background-color: #fff;
+}
+
+/* idk */
+
+.profile-picture {
+	width: 48px;
+	height: 48px;
+	border-radius: 24px;
+	overflow: hidden;
+	background-color: #ddd;
 }

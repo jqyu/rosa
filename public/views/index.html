@@ -14,26 +14,30 @@
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic">
 		
 		<link rel="stylesheet" type="text/css" href="styles/app.css">
-		<link rel="stylesheet" type="text/css" href="styles/login.css">
+		<link rel="stylesheet" type="text/css" href="styles/auth.css">
+		<link rel="stylesheet" type="text/css" href="styles/nav.css">
 
 		<!-- Angular.js libraries -->
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
 
 		<!-- Custom app code -->
-		<script type="text/javascript" src="js/app.js"></script>
-		<script type="text/javascript" src="js/controllers/MainCtrl.js"></script>
-		<script type="text/javascript" src="js/controllers/LoginCtrl.js"></script>
-
+		<script type="text/javascript" src="scripts/app.js"></script>
+		<!-- Services -->
+		<script type="text/javascript" src="scripts/services/Auth.js"></script> 
+		<!-- Controllers -->
+		<script type="text/javascript" src="scripts/controllers/MainCtrl.js"></script>
+		<script type="text/javascript" src="scripts/controllers/AuthCtrl.js"></script>
+		<script type="text/javascript" src="scripts/controllers/NavCtrl.js"></script>
 
 
 	</head>
 	<body ng-controller="MainCtrl">
 
-		<nav id="site-header">
-			<h4 id="logo">
-				rosa.wtf
-			</h4>
+		<nav id="site-header" ng-include src="'views/partials/nav.html'" ng-controller="NavCtrl">
 		</nav>
 		
 		<div id="site-container" ng-view></div>

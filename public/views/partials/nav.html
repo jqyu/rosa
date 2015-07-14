@@ -1,0 +1,25 @@
+<h4 id="logo">
+	<a href="/">ro<br />sa</a>
+</h4>
+
+<div id="user-info" ng-if="currentUser">
+	<div id="user-info-username">
+		{{currentUser.username}}
+	</div>
+	<a href="#">
+		settings
+	</a>
+	&nbsp;
+	<a ng-click="logout()">
+		logout
+	</a>
+</div>
+
+<div id="user-login" ng-if="!currentUser">
+	<a href="/auth/login">
+		Log in
+	</a><br />
+	<a href="/auth/signup">
+		Register
+	</a>
+</div>
