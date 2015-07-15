@@ -8,9 +8,9 @@ angular.module('rosaApp', [
 .config(function ($routeProvider, $locationProvider) {
 	
 	$routeProvider
+		// home page and search
 		.when('/', {
-			templateUrl: 'views/partials/home.html',
-			controller: 'MainCtrl'
+			templateUrl: 'views/partials/home.html'
 		})
 		.when('/auth/:activeForm', {
 			templateUrl: 'views/partials/auth.html',

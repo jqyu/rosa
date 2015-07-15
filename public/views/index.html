@@ -15,6 +15,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="styles/app.css">
 		<link rel="stylesheet" type="text/css" href="styles/auth.css">
+		<link rel="stylesheet" type="text/css" href="styles/chat.css">
 		<link rel="stylesheet" type="text/css" href="styles/nav.css">
 
 		<!-- Angular.js libraries -->
@@ -29,13 +30,15 @@
 		<!-- Services -->
 		<script type="text/javascript" src="scripts/services/Auth.js"></script> 
 		<!-- Controllers -->
-		<script type="text/javascript" src="scripts/controllers/MainCtrl.js"></script>
 		<script type="text/javascript" src="scripts/controllers/AuthCtrl.js"></script>
+		<script type="text/javascript" src="scripts/controllers/ChatCtrl.js"></script>
 		<script type="text/javascript" src="scripts/controllers/NavCtrl.js"></script>
 
 
 	</head>
-	<body ng-controller="MainCtrl">
+	<body>
+
+		<div id="chat" ng-include src="'views/partials/chat.html'" ng-controller="ChatCtrl"></div>
 
 		<nav id="site-header" ng-include src="'views/partials/nav.html'" ng-controller="NavCtrl">
 		</nav>

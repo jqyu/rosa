@@ -34,7 +34,7 @@
 	letter-spacing: 0;
 	background-color: #fff;
 	color: #333;
-	transform: rotate(-15deg) skewX(-15deg);
+	transform: skew(0deg, -15deg);
 }
 #logo a:hover #logo-wtf {
 	border-color: #f66;
