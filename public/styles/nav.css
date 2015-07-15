@@ -1,35 +1,73 @@
 #site-header {
 	padding: 24px 0px;
-	height: 94px;
-}
-
-#logo {
-	padding: 24px;
-	float: left;
-	text-align: center;
-}
-
-#user-info,
-#user-login {
-	padding: 24px;
-	float: right;
-	text-align: right;
+	height: 72px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 10px;
 	text-transform: uppercase;
 	letter-spacing: 0.3em;
 }
 
+#site-header a {
+	color: #333;
+	text-decoration: none;
+}
+
+#site-header a:hover {
+	color: #4EF;
+}
+
+#logo {
+	padding-left: 24px;
+	float: left;
+	text-align: center;
+	letter-spacing: 12px;
+}
+#logo a:hover {
+	color: #f66;
+}
+
+#logo-wtf {
+	line-height: 10px;
+	margin: 6px 12px 6px 0px;
+	border: 1px solid #333;
+	font-size: 8px;
+	letter-spacing: 0;
+	background-color: #fff;
+	color: #333;
+	transform: rotate(-15deg) skewX(-15deg);
+}
+#logo a:hover #logo-wtf {
+	border-color: #f66;
+	background-color: #f66;
+	color: #fff;
+}
+
+#user-info,
+#user-login {
+	padding-right: 24px;
+	float: right;
+	text-align: right;
+}
+
+#user-login {
+	padding-top: 24px;
+}
+
+#user-info a,
+#user-login a {
+	display: block;
+}
+
 
 @media (min-width: 528px) {
 
 	#logo {
-		padding: 24px 48px;
+		padding-left: 48px;
 	}
 
 	#user-info,
 	#user-login {
-		padding: 24px 48px;
+		padding-right: 48px;
 	}
 
 }

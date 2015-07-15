@@ -1,16 +1,19 @@
 <h4 id="logo">
-	<a href="/">ro<br />sa</a>
+	<a href="/">
+		ro
+		<div id="logo-wtf"> .wtf </div>
+		sa
+	</a>
 </h4>
 
 <div id="user-info" ng-if="currentUser">
-	<div id="user-info-username">
+	<a href="/users/{{curentUser.username}}">
 		{{currentUser.username}}
-	</div>
-	<a href="#">
-		settings
 	</a>
-	&nbsp;
-	<a ng-click="logout()">
+	<a href="/submit">
+		submit	
+	</a>
+	<a href="/logout" ng-click="logout()">
 		logout
 	</a>
 </div>
@@ -18,7 +21,7 @@
 <div id="user-login" ng-if="!currentUser">
 	<a href="/auth/login">
 		Log in
-	</a><br />
+	</a>
 	<a href="/auth/signup">
 		Register
 	</a>
