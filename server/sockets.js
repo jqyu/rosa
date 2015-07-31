@@ -7,40 +7,51 @@ module.exports = function(io, sessionMiddleware) {
 	};
 
 	var userStore = {}, // cache of users by id
-		chatCache = []; // cache of previous message
+		chatCache = {	// cache of chat state
+			sessions: {},
+			messages: []	
+		};
 
 	var chat = io
 		.of('/chat')
 		.use(useSession)
 		.on('connection', function(socket) {
 
+			// HANDLE SESSIONS
+			// ==============================
+			
 			var userId = socket.request.session.passport.user,
 				chatSession = null,
-				openChatSession = function() {
-					var user = userStore[userId];
-					chatSession = {
-						role: user && user.role,
-						role: (user && user.username) || 'guest'
-					}
-					console.log('session connected:');
-					console.log(chatSession);
-					// TODO: emit connected message here
-				},
-				closeChatSession = function() {
-					console.log('session disconnected:');
-					console.log(chatSession);	
-				},
-				initChatSession = function() {
-					if(userStore[userId]) {
-						return openChatSession();
-					}
-					User.findOne({ _id: userId }, function(err, user) {
-						userStore[userId] = user;
-						openChatSession();
-					});
-				};
 
-			initChatSession();
+				initChatSession = function() {
+					if (userStore[userId]) {
+						return Promise.resolve(userStore[userId]);
+					}
+					return User.findOne({ _id: userId }).exec();
+				},
+
+				openChatSession = function(user) {
+					userStore[userId] = user;
+					chatSession = {
+						role: (user && user.role) || 0,
+						username: (user && user.username) || 'guest'
+					}
+					socket.emit('initial payload', chatCache);
+					chat.emit('session connected', chatSession);
+					// TODO: Return initialization request
+					//			i.e. chat history and list of sessions 
+					// TODO: Register session 
+					console.log('session connected:', chatSession);
+				},
+
+				closeChatSession = function() {
+					chat.emit('session disconnected', chatSession);
+					// TODO: Teardown session
+					console.log('session disconnected:', chatSession);
+				}
+
+			initChatSession()
+				.then(openChatSession);
 
 			socket.on('disconnect', closeChatSession);	
 
