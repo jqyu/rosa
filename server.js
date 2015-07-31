@@ -3,6 +3,7 @@
 // modules ===========================================
 var express			= require('express'),
 	app				= express(),
+	http			= require('http').Server(app),
 	cookieParser	= require('cookie-parser'),
 	session			= require('express-session'),
 	MongoStore		= require('connect-mongo')(session);
@@ -31,7 +32,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // enable cookie support
 app.use(cookieParser());
 // enable session support
-app.use(session({
+var sessionMiddleware = session({
 	resave: true,
 	saveUninitialized: false,
 	secret: config.session.secret,
@@ -39,7 +40,8 @@ app.use(session({
 		url: config.db.url,
 		collection: 'sessions'
 	})
-}));
+});
+app.use(sessionMiddleware);
 
 // configure passport middleware
 require('./server/config/pass');
@@ -53,10 +55,14 @@ require('./server/routes')(app); // configure our routes
 
 // start app ==========================================
 // startup our app at http://localhost:8080
-app.listen(port);
+http.listen(port);
+
+// initialize sockets =================================
+require('./server/sockets.js')
+	(require('socket.io')(http), sessionMiddleware);
 
 // shoutout to the user
 console.log('Listening on port ' + port);
 
 // expose app
-exports = module.exports = app;
+exports = module.exports = http;

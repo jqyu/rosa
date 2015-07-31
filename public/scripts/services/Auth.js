@@ -9,6 +9,11 @@ angular.module('rosaApp')
 	// create session adapter
 	var Session = $resource('/auth/session');
 
+	// crate session change observers
+	var notify = function() {
+			$rootScope.$broadcast('currentUser:changed', $rootScope.currentUser);
+		}
+
 	return {
 
 		login: function(provider, userInfo, callback) {
@@ -19,6 +24,7 @@ angular.module('rosaApp')
 				password: userInfo.password
 			}, function(user) {
 				$rootScope.currentUser = user;
+				notify();
 				return cb();
 			}, cb);
 		},
@@ -27,6 +33,7 @@ angular.module('rosaApp')
 			var cb = callback || angular.noop;
 			Session.delete(function (res) {
 				$rootScope.currentUser = null;
+				notify();
 				return cb();
 			}, cb);
 		},
@@ -36,6 +43,7 @@ angular.module('rosaApp')
 			$http.post('/auth/users', userInfo)
 				.success(function(user) {
 					$rootScope.currentUser = user;
+					notify();
 					return cb();
 				})
 				.error(cb);
@@ -44,6 +52,7 @@ angular.module('rosaApp')
 		refreshSession: function() {
 			Session.get(function(user) {
 				$rootScope.currentUser = user;
+				notify();
 			});
 		}	
 	};
