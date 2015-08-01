@@ -1,5 +1,40 @@
 <div id="chat-box" ng-class="{'open': open}">
-	<div id="chat-area">
+	<div id="chat-connecting">
+		<div id="chat-connecting-message">
+			<h5>Connecting</h5>
+			...
+		</div>
+	</div>
+	<div id="chat-area" ng-class="{'visible': chat}">
+		<div id="chat-messages"
+			ng-if="chat.messages"
+			ng-click="setSessionsOpen(false)"
+			scroll-bottom="chat.messages">
+			<div class="chat-message"
+				ng-repeat="message in chat.messages">
+				<span class="chat-message-sender" ng-bind="message.session.username"></span>
+				<span class="chat-message-text" ng-bind="message.message"></span>
+			</div>
+		</div>
+		<form id="chat-post"
+			name="chatMessageForm"
+			ng-submit="sendMessage(chatMessageForm)"
+			ng-click="setSessionsOpen(false)">
+			<input type="text" placeholder="Send message..." ng-model="chatMessageForm.message">
+		</form>
+		<div id="chat-sessions"
+			ng-if="chat.sessions"
+			ng-click="setSessionsOpen(true)"
+			ng-class="{'open': sessionsOpen}">
+			<div id="chat-sessions-preview"
+				ng-bind="chat.sessions.length + (chat.sessions.length > 1 ? ' users' : ' user') + ' online'">
+			</div>
+			<div class="chat-session"
+				ng-repeat="session in chat.sessions"
+				ng-bind="session.username">
+			</div>
+		</div>
+		<!-- do an ng-repeat here -->
 	</div>
 </div>
 <div id="chat-toggle-button" ng-class="{'open': open}">

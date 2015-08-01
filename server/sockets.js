@@ -7,10 +7,8 @@ module.exports = function(io, sessionMiddleware) {
 	};
 
 	var userStore = {}, // cache of users by id
-		chatCache = {	// cache of chat state
-			sessions: {},
-			messages: []	
-		};
+		chatSessions = [],
+		chatMessages = [];
 
 	var chat = io
 		.of('/chat')
@@ -34,26 +32,49 @@ module.exports = function(io, sessionMiddleware) {
 					userStore[userId] = user;
 					chatSession = {
 						role: (user && user.role) || 0,
-						username: (user && user.username) || 'guest'
+						username: (user && user.username) ||
+									('guest #' + Math.floor(Math.random()*9999))
 					}
-					socket.emit('initial payload', chatCache);
-					chat.emit('session connected', chatSession);
-					// TODO: Return initialization request
-					//			i.e. chat history and list of sessions 
-					// TODO: Register session 
-					console.log('session connected:', chatSession);
+					chatSessions.push(chatSession);
+					socket.emit('initial payload', {
+						session: chatSession,
+						sessions: chatSessions,
+						messages: chatMessages	
+					});
+					socket.broadcast.emit('session connected', chatSession);
 				},
 
 				closeChatSession = function() {
-					chat.emit('session disconnected', chatSession);
-					// TODO: Teardown session
-					console.log('session disconnected:', chatSession);
+					// remove session by reference
+					var idx = chatSessions.indexOf(chatSession);
+					// catches case of session mismatch
+					if ( idx >= 0 ) {
+						chatSessions.splice(idx, 1);
+					}
+					socket.broadcast.emit('session disconnected', chatSession);
 				}
 
 			initChatSession()
 				.then(openChatSession);
 
 			socket.on('disconnect', closeChatSession);	
+
+			// HANDLE MESSAGES 
+			// ==============================
+
+			socket.on('message', function(message) {
+				 var m = {
+					session: chatSession,
+					message: message
+				 };
+				 chatMessages.push(m);
+				 var trunc = chatMessages.length - 100;
+				 if ( trunc > 0 ) {
+					 chatMessages.splice(0, trunc);
+				 }
+				 socket.broadcast.emit('message', m);
+			});
+
 
 		});
 
