@@ -7,19 +7,23 @@
 	</div>
 	<div id="chat-area" ng-class="{'visible': chat}">
 		<div id="chat-messages"
-			ng-if="chat.messages"
+			ng-if="messageChunks"
 			ng-click="setSessionsOpen(false)"
-			scroll-bottom="chat.messages">
+			scroll-bottom="messageChunks">
+
 			<div class="chat-message"
-				ng-repeat="message in chat.messages">
-				<span class="chat-message-sender" ng-bind="message.session.username"></span>
-				<span class="chat-message-text" ng-bind="message.message"></span>
+				ng-repeat="messageChunk in messageChunks">
+				<div class="chat-message-date" ng-bind="messageChunk[0].sentAt | date : 'shortTime'"></div>
+				<div class="chat-message-sender" ng-bind="messageChunk[0].session.username"></div>
+				<div class="chat-message-text" ng-repeat="message in messageChunk" ng-bind="message.message"></div>
 			</div>
+
 		</div>
 		<form id="chat-post"
 			name="chatMessageForm"
 			ng-submit="sendMessage(chatMessageForm)"
 			ng-click="setSessionsOpen(false)">
+			<button type="submit"> &gt; </button>
 			<input type="text" placeholder="Send message..." ng-model="chatMessageForm.message">
 		</form>
 		<div id="chat-sessions"

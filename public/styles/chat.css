@@ -53,22 +53,60 @@
 #chat-messages {
 	position: absolute;
 		top: 0;
-		bottom: 72px;
+		bottom: 48px;
 		left: 0;
 		right: 24px;
 	padding: 24px 24px 0;
 	overflow: auto;
 }
+.chat-message {
+	margin-bottom: 12px;
+}
+.chat-message-date {
+	float: right;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	color: #ccc;
+}
+.chat-message-sender {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
 #chat-post {
 	position: absolute;
-		top: 408px;
+		top: 432px;
 		bottom: 0px;
 		left: 0;
 		right: 24px;
 	max-width: none;
 	height: auto;
-	padding: 0 24px;
+	padding: 0 24px 0 48px;
 	border-top: 1px solid #f66;
+}
+#chat-post button {
+	position: absolute;
+		top: 0;
+		left: 0;
+	width: 36px;
+	height: 48px;
+	padding: 0;
+	letter-spacing: 0;
+	line-height: 36px;
+	color: #fff;
+	background-color: #f66;
+	border: none;
+	border-right: 1px solid #f66;
+}
+#chat-post button:hover {
+	color: #f66;
+	background-color: #fff;
+}
+#chat-post input {
+	font-size: 14px;
 }
 #chat-sessions {
 	position: absolute;

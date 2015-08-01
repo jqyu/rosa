@@ -63,16 +63,20 @@ module.exports = function(io, sessionMiddleware) {
 			// ==============================
 
 			socket.on('message', function(message) {
-				 var m = {
+				if (!message) {
+					return;
+				}
+				var m = {
 					session: chatSession,
-					message: message
-				 };
-				 chatMessages.push(m);
-				 var trunc = chatMessages.length - 100;
-				 if ( trunc > 0 ) {
-					 chatMessages.splice(0, trunc);
-				 }
-				 socket.broadcast.emit('message', m);
+					message: message,
+					sentAt: Date.now()
+				};
+				chatMessages.push(m);
+				var trunc = chatMessages.length - 50;
+				if ( trunc > 0 ) {
+					chatMessages.splice(0, trunc);
+				}
+				socket.broadcast.emit('message', m);
 			});
 
 
