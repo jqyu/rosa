@@ -13,7 +13,7 @@
 
 			<div class="chat-message"
 				ng-repeat="messageChunk in messageChunks">
-				<div class="chat-message-date" ng-bind="messageChunk[0].sentAt | date : 'shortTime'"></div>
+				<div class="chat-message-date" ng-bind="messageChunk[0].sentAt | date : 'mediumTime'"></div>
 				<div class="chat-message-sender" ng-bind="messageChunk[0].session.username"></div>
 				<div class="chat-message-text" ng-repeat="message in messageChunk" ng-bind="message.message"></div>
 			</div>
