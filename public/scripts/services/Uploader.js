@@ -19,17 +19,20 @@ angular.module('rosaApp')
 
 		// upload first queued object
 		obj.isUploading = true;
+		obj.progress = 0;
+		obj.percent = 0;
+		obj.percentage = '0%';
+
 		var form = new FormData();
 		var xhr = new XMLHttpRequest();
-		form.append('filename', obj.upload.name);
+
 		form.append('upload', obj.upload);
 
 		xhr.upload.onprogress = function(e) {
-			// TODO: progress animation
-			console.log('upload progress:', e);
+			obj.progress = e.loaded;
+			obj.percent = e.loaded/e.total;
 			$rootScope.$digest();
 		};
-
 		xhr.onreadystatechange = function(e) {
 			if (this.readyState === 4) {
 				obj.upload = JSON.parse(this.responseText);

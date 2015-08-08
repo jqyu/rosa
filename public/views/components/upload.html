@@ -23,4 +23,14 @@
 			cancel
 		</button>
 	</div>
+	<div class="upload-progress"
+		ng-if="model.isUploading">
+		<div class="upload-radial upload-radial-right">
+			<div class="upload-radial-fill" ng-style="progressRightStyle"></div>
+		</div>
+		<div class="upload-radial upload-radial-left">
+			<div class="upload-radial-fill" ng-style="progressLeftStyle"></div>
+		</div>
+		<h5 class="upload-progress-text" ng-bind="percentage"></h5>
+	</div>
 </div>

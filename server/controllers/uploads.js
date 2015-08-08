@@ -4,6 +4,9 @@ var fs		= require('fs'),
 	path	= require('path'),
 	Upload  = require('../models/upload');
 
+var rootPath = path.join(__dirname, '../../'),
+	uploadsPath = path.join(rootPath, 'public/uploads');
+
 // TODO: FIX EVERYTHING THIS IS ALL SO FUCKING TERRIBLE
 
 module.exports.upload = multer({
@@ -16,11 +19,10 @@ module.exports.create = function (req, res, next) {
 	var	file = req.file,
 		mimetype = file.mimetype,
 		filetype = mimetype && mimetype.split('/')[0],
-		rootPath = path.join(__dirname, '../../'),
 		filePath = path.join(rootPath, file.path),
 		dest = req.user.username+'/'+file.filename,
-		destDir = path.join(rootPath, 'public/uploads/', req.user.username)
-		destPath = path.join(rootPath, 'public/uploads', dest);
+		destDir = path.join(uploadsPath, req.user.username)
+		destPath = path.join(uploadsPath, dest);
 
 	var cleanup = function(f) {
 		fs.unlink(f);
@@ -33,24 +35,28 @@ module.exports.create = function (req, res, next) {
 	}
 
 	fs.mkdir(destDir, function() {
+		// we ignore the exists error and continue
 		fs.rename(filePath, destPath, function(err) {
 			if (err) {
 				console.log('error:', err);
 				return cleanup(filePath);
 			}
 			var newUpload = new Upload({
+				_user: req.user,
 				mimetype: mimetype,
 				path: dest,
-				size: file.size,
-				userId: req.user.id
+				size: file.size
 			});
-			newUpload.save(function(err, upload) {
-				if (err) {
+			newUpload.save()
+				.then(function(upload) {
+					res.json(upload);
+				}, function(err) {
 					console.log('error saving upload', upload);
 					return cleanup(destPath);
-				}
-				res.json(upload);
-			});
+				});
 		});
 	});
+};
+
+module.exports.delete = function(req, res, next) {
 };

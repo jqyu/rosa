@@ -11,40 +11,40 @@ module.exports.create = function (req, res, next) {
 	newUser.provider = 'local';
 
 	// call save hook
-	newUser.save(function(err) {
-		if(err) {
+	newUser.save()
+		.then(function(user) {
+			req.logIn(newUser, function(err) {
+				if (err) return next(err);
+				return res.json(newUser.info);
+			});
+		}, function(err) {
 			// TODO: handle more error messages
-			return res.status(400).json(err);
-		}
-		req.logIn(newUser, function(err) {
-			if (err) return next(err);
-			return res.json(newUser.info);
+			res.status(400).json(err);
 		});
-	});
 };
 
 module.exports.show = function (req, res, next) {
 	var username = req.params.username.toLowerCase();
 
-	User.findOne({ username: username }, function (err, user) {
-		if (err) {
+	User.findOne({ username: username })
+		.then(function (user) {
+			if (user) {
+				res.json(user.info);
+			} else {
+				res.status(404).send('User not found');
+			}
+		}, function(err) {
 			return next(new Error('Failed to load User: ' + username));
-		}
-		if (user) {
-			res.json(user.info);
-		} else {
-			res.status(404).send('User not found');
-		}
-	});
+		});
 };
 
 module.exports.exists = function (req, res, next) {
 	var username = req.params.username.toLowerCase();
 
-	User.findOne({ username: username }, function (err, user) {
-		if (err) {
+	User.findOne({ username: username })
+		.then(function (user) {
+			res.send({ exists: !!user });
+		}, function(err) {
 			return next(new Error('Failed to load User: ' + username));
-		}
-		res.send({ exists: !!user });
-	});
+		});
 };

@@ -37,6 +37,58 @@
 .upload-controls button {
 	margin-top: 24px;
 }
+.upload-progress {
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	margin: auto;
+	z-index: 1;
+	height: 120px;
+	width: 120px;
+	background-color: #fff;
+	border-radius: 60px;
+}
+.upload-radial {
+	position: absolute;
+	height: 116px;
+	width: 58px;
+	background-color: #ddd;
+	border-radius: 0px 58px 58px 0px;
+	overflow: hidden;
+}
+.upload-radial-right {
+	top: 2px;
+	left: 60px;
+	transform: rotate(0deg);
+}
+.upload-radial-left {
+	top: 2px;
+	left: 2px;
+	transform: rotate(180deg);
+}
+.upload-radial-fill {
+	height: 116px;
+	width: 58px;
+	background-color: #4ef;
+	transform-origin: 0% 50%;
+	transform: rotate(180deg);
+	transition: none;
+}
+.upload-progress-text {
+	position: absolute;
+		top: 4px;
+		bottom: 4px;
+		left: 4px;
+		right: 4px;
+	height: 112px;
+	width: 112px;
+	line-height: 112px;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 56px;
+}
 
 .upload-selector input[type="file"] {
 	display: none;

@@ -30,6 +30,22 @@ angular.module('rosaApp')
 				}
 			});
 
+			scope.percentage = null;
+			scope.progressRightStyle = {
+				transform: 'rotate(180deg)'	
+			};
+			scope.progressLeftStyle = {
+				transform: 'rotate(180deg)'	
+			};
+
+			scope.$watch('model.percent', function(percent) {
+				scope.percentage = Math.round(percent * 100) + '%';
+				var amtRight = 2 * Math.min(0.5, percent) + 1;
+				var amtLeft = 2 * Math.max(0.5, percent);
+				scope.progressRightStyle.transform = 'rotate(' + (180 * amtRight) + 'deg)';
+				scope.progressLeftStyle.transform = 'rotate(' + (180 * amtLeft) + 'deg)';
+			});
+
 			scope.swap = function(upload) {
 				if (upload) {
 					scope.model.upload = upload;

@@ -37,6 +37,10 @@ module.exports = function(app) {
 	// create upload
 	app.route('/api/uploads')
 		.post(auth.ensureAuthenticated, uploads.upload, uploads.create);
+	// delete upload
+	app.route('/api/uploads/:id')
+		.delete(uploads.delete);
+
 	
 	// frontend routes ==============================
 	// route to handle all angular requests
