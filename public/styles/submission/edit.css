@@ -1,0 +1,18 @@
+#submission-uploads {
+	padding: 0px 24px;
+	margin: 0 auto;
+	max-width: 432px;
+}
+
+#submission-uploads .upload-selector {
+	max-width: 432px;
+	margin: 0 auto;
+}
+
+@media (min-width: 528px) {
+	padding: 0px 48px;
+}
+
+#submission-edit-form button {
+	margin-top: 24px;	
+}.

@@ -1,0 +1,41 @@
+<div id="submission-uploads">
+	<div class="upload"
+		 ng-repeat="upload in submission.uploads"
+		 ng-model="upload"
+		 clear-action="clearUpload(upload)">
+	</div>
+	<upload-selector
+		multiple
+		select-text="{{selectText}}"
+		select-action="pushUploads(files)">
+	</uploader-selecctor>
+</div>
+
+<form id="submission-edit-form"
+	name="editForm"
+	ng-submit="submit(editForm)">
+	
+	<label>
+		<div class="input-label">
+			title
+		</div>
+		<div class="input-validation error"
+			 ng-bind="editForm.errors.title">
+		</div>
+		<input type="text" ng-model="editForm.title">
+	</label>
+	<label>
+		<div class="input-label">
+			description
+		</div>
+		<textarea placeholder="Write a short caption about your piece..." rows="8"></textarea>
+	</label>
+
+	<button type="submit">
+		save draft
+	</button>
+	<button type="submit">
+		submit
+	</button>
+
+</form>

@@ -5,11 +5,13 @@ var path = require('path'),
 
 module.exports = function(app) {
 
+	var users = require('./controllers/users'),
+		uploads = require('./controllers/uploads');
+
 	// server routes ================================
 
 	// authentication routes
 	
-	var users = require('./controllers/users');
 	// sign up
 	app.post('/auth/users', users.create);
 	// check if user exists
@@ -29,8 +31,12 @@ module.exports = function(app) {
 	// api calls
 	
 	// get user by username 
-	app.route('api/users/:username')
+	app.route('/api/users/:username')
 		.get(users.show);
+
+	// create upload
+	app.route('/api/uploads')
+		.post(auth.ensureAuthenticated, uploads.upload, uploads.create);
 	
 	// frontend routes ==============================
 	// route to handle all angular requests

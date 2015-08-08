@@ -24,7 +24,7 @@ module.exports.create = function (req, res, next) {
 };
 
 module.exports.show = function (req, res, next) {
-	var id = req.params.username.toLowerCase();
+	var username = req.params.username.toLowerCase();
 
 	User.findOne({ username: username }, function (err, user) {
 		if (err) {

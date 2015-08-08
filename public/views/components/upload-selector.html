@@ -1,0 +1,9 @@
+<div class="upload-selector">
+	<input type="file"
+		accept="image/*"
+		onchange="angular.element(this).scope().select(this)">
+	<h5 class="upload-selector-prompt"
+		ng-click="browse()"
+		ng-bind="selectText">
+	</h5>
+</div>

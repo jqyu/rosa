@@ -8,10 +8,13 @@ angular.module('rosaApp', [
 .config(function ($routeProvider, $locationProvider) {
 	
 	$routeProvider
+
 		// home page and search
 		.when('/', {
 			templateUrl: 'views/partials/home.html'
 		})
+	
+		// login form
 		.when('/auth/:activeForm', {
 			templateUrl: 'views/partials/auth.html',
 			controller: 'AuthCtrl'
@@ -22,6 +25,14 @@ angular.module('rosaApp', [
 		.when('/signup', {
 			redirectTo: '/auth/signup'
 		})
+
+		// submit form
+		.when('/submit', {
+			templateUrl: 'views/partials/submissions/edit.html',
+			controller: 'SubmissionEditCtrl'
+		})
+		
+		// TODO: 404
 		.otherwise({
 			redirectTo: '/'
 		});

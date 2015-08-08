@@ -1,0 +1,26 @@
+<img ng-if="tempUrl" ng-src="{{tempUrl}}">
+<img ng-if="model.upload._id" ng-src="uploads/{{model.upload.path}}">
+<div class="upload-overlay"
+	 ng-if="!model.isQueued">
+	<div class="upload-controls">
+		<upload-selector
+			select-text="Swap Image"
+			select-action="swap(files)">
+		</upload-selector>
+		<button class="btn-delete" href ng-click="clear()">
+			clear
+		</button>
+	</div>
+</div>
+<div class="upload-overlay progress"
+	 ng-if="model.isQueued">
+	<div class="upload-controls queued"
+		 ng-if="!model.isUploading && model.isQueued" >
+		 <h5>
+			queued
+		 </h5>
+		<button class="btn-delete" href ng-click="clear()">
+			cancel
+		</button>
+	</div>
+</div>

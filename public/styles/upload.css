@@ -1,0 +1,96 @@
+.upload {
+	position: relative;
+	margin: 12px 0;
+	min-height: 240px;
+}
+.upload-overlay {
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	width: auto;
+	height: auto;
+	background-color: rgba(255,255,255,0.5);
+	opacity: 0;
+}
+.upload-overlay:hover {
+	opacity: 1;
+}
+.upload-overlay.progress {
+	opacity: 1;
+}
+.upload-controls {
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	z-index: 1;
+	height: 168px;
+	max-width: 432px;
+	padding: 24px;
+	background-color: #fff;
+	width: auto;
+	margin: auto;
+}
+.upload-controls button {
+	margin-top: 24px;
+}
+
+.upload-selector input[type="file"] {
+	display: none;
+}
+.upload-selector h5,
+.upload-controls.queued h5 {
+	text-align: center;
+	position: relative;
+	padding: 36px 0;
+	margin: 0;
+	color: #000;
+}
+.upload-selector h5 {
+	cursor: pointer;
+	border: 2px dashed #000;
+	padding: 34px 0;
+}
+.upload-selector h5:before {
+	content: '+';
+	display: block;
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	z-index: -1;
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	letter-spacing: 0;
+	margin: auto;
+	border: 1px solid #ccc;
+	color: #ccc;
+	border-radius: 50%;
+}
+
+.upload-selector h5:hover {
+	border-color: #f66;
+	color: #f66;
+}
+.upload-selector h5:hover:before {
+	border-color: #4ef;
+	color: #4ef;
+}
+.upload-controls.queued h5:before {
+	content: '...';	
+	display: block;
+	position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+	margin: auto;
+	text-align: center;
+	margin-top: 6px;
+	color: #f66;
+}

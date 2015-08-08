@@ -1,4 +1,4 @@
-* {
+*, *:before, *:after {
 	margin: 0px;
 	padding: 0px;
 	outline: 0px;
@@ -43,6 +43,15 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h4 {
 	line-height: 24px;
 	font-size: 14px;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	margin: 0 auto;
 }
 
 .success,
@@ -95,10 +104,14 @@ button {
 	display: block;
 }
 
-input {
+input,
+textarea {
 	width: 100%;
 	clear: both;
 	font-family: 'Libre Baskerville', serif;
+}
+
+input {
 	font-size: 16px;
 	line-height: 48px;
 	border-bottom: 1px solid #ddd;
@@ -113,6 +126,13 @@ input:focus {
 	border-color: #4EF;
 }
 
+textarea {
+	font-size: 14px;
+	line-height: 24px;
+	padding: 12px 0;
+}
+
+.btn,
 button {
 	cursor: pointer;
 	width: 100%;
@@ -127,9 +147,15 @@ button {
 	letter-spacing: 0.5em;
 }
 
+.btn:hover,
 button:hover {
 	background-color: #4EF;
 	border-color: #4EF;
+	color: #fff;
+}
+.btn-delete:hover {
+	background-color: #f66;
+	border-color: #f66;
 	color: #fff;
 }
 
