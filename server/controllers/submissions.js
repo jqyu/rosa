@@ -17,8 +17,12 @@ module.exports.index = function(req, res, next) {
 };
 
 module.exports.show = function(req, res, next) {
+	var populate = '_user uploads';
+	if (req.query.includes && req.query.includes.indexOf('comments') > -1) {
+		populate += ' comments';
+	}
 	Submission.findOne({ _id: req.params.id })
-		.populate('uploads _user')
+		.populate(populate)
 		.then(function(submission) {
 				if (!submission) {
 					return res.sendStatus(404);

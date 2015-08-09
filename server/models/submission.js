@@ -14,7 +14,8 @@ var SubmissionSchema = new mongoose.Schema({
 	description: String,
 	state: Number,
 
-	uploads: [{ type: String, ref: 'Upload' }]
+	uploads: [{ type: String, ref: 'Upload' }],
+	comments: [{ type: String, ref: 'Comment' }]
 });
 
 SubmissionSchema
@@ -46,14 +47,16 @@ SubmissionSchema
 		});
 	})
 	.pre('remove', function(next) {
-		this.populate('uploads', function(err, submission) {
+		this.populate('uploads comments', function(err, submission) {
 			if (err) {
 				return next(err);
 			}
 			// we're going to be pretty optimistic here
 			for (var i = 0; i < submission.uploads.length; i++) {
-				var upload = submission.uploads[i];
-				upload.remove();
+				submission.uploads[i].remove();
+			}
+			for (var i = 0; i < submission.comments.length; i++) {
+				submission.comments[i].remove();
 			}
 			next();
 		});

@@ -19,11 +19,35 @@
 
 <div id="submission-comments">
 	<h4>Comments</h4>
+	<h5 id="no-comments"
+		 ng-if="submission.comments.length < 1">
+		No comments yet
+	</h5>
+	<div class="submission-comment"
+		ng-repeat="comment in submission.comments">
+		<h5 class="submission-comment-date"
+			ng-bind="comment.createdAt | date : 'dd.mm.yy h:mma'">
+		</h5>
+		<h5>
+			<a ng-href="/users/{{submission._user.username}}"
+				ng-bind="submission._user.username">
+			</a>
+		</h5>
+		<div rich-text="comment.text"></div>
+	</div>
 </div>
-<form id="submission-comment-form">
-	<h5>Leave a comment</h5>
-	<textarea rows="3" placeholder="your art fuckin sucks lol"></textarea>
+<form id="submission-comment-form"
+	name="commentForm"
+	ng-submit="comment()">
+	<label>
+		<div class="input-label">Leave a comment</div>
+		<textarea
+			ng-model="commentText"
+			rows="3"
+			placeholder="your art fuckin sucks lol"></textarea>
+	</label>
 	<button type="submit"
-		 ng-bind="'post'">
+		 ng-disabled="isCommenting || !commentText || !currentUser"
+		 ng-bind="currentUser ? (isCommenting ? 'posting' : 'post') : 'log in to comment'">
 	</button>
 </form>

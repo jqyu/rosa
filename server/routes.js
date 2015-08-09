@@ -45,8 +45,20 @@ module.exports = function(app) {
 		.put(auth.ensureAuthenticated, submissionsAuthenticator, submissions.process, submissions.update)
 		.delete(auth.ensureAuthenticated, submissionsAuthenticator, submissions.delete);
 
-	// uploads
+	// comments
+	var comments = require('./controllers/comments'),
+		Comment = require('./models/comment'),
+		commentsAuthenticator = auth.modelAuthenticator(Comment, 'comment', 2);
 
+	app.route('/api/submissions/:id/comments')
+		.post(auth.ensureAuthenticated, comments.create);
+
+	app.route('/api/comments/:id')
+		.put(auth.ensureAuthenticated, commentsAuthenticator, comments.update)
+		.delete(auth.ensureAuthenticated, commentsAuthenticator, comments.delete);
+
+
+	// uploads
 	var uploads = require('./controllers/uploads'),
 		Upload = require('./models/upload'),
 		uploadsAuthenticator = auth.modelAuthenticator(Upload, 'upload', 2);

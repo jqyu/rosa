@@ -47,7 +47,7 @@ angular.module('rosaApp', [
 			templateUrl: 'views/partials/submissions/edit.html',
 			controller: 'SubmissionEditCtrl'
 		})
-		
+
 		// TODO: 404
 		.otherwise({
 			redirectTo: '/'
