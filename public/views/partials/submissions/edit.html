@@ -1,4 +1,8 @@
 <div id="submission-uploads">
+	<h5 id="submission-upload-errors"
+		ng-if="editForm.errors.uploads"
+		ng-bind="editForm.errors.uploads">
+	</h5>
 	<div class="upload"
 		 ng-repeat="upload in submission.uploads"
 		 ng-model="upload"
@@ -6,14 +10,14 @@
 	</div>
 	<upload-selector
 		multiple
-		select-text="{{selectText}}"
+		select-text="{{submission.uploads.length ? 'Add Images' : 'Select Images'}}"
 		select-action="pushUploads(files)">
 	</uploader-selecctor>
 </div>
 
 <form id="submission-edit-form"
 	name="editForm"
-	ng-submit="submit(editForm)">
+	ng-submit="save(editForm)">
 	
 	<label>
 		<div class="input-label">
@@ -22,19 +26,29 @@
 		<div class="input-validation error"
 			 ng-bind="editForm.errors.title">
 		</div>
-		<input type="text" ng-model="editForm.title">
+		<input
+			type="text"
+			ng-model="submission.title">
 	</label>
 	<label>
 		<div class="input-label">
 			description
 		</div>
-		<textarea placeholder="Write a short caption about your piece..." rows="8"></textarea>
+		<textarea
+			placeholder="Write a short caption about your piece..."
+			rows="8"
+			ng-model="submission.description">
+		</textarea>
 	</label>
 
-	<button type="submit">
-		save draft
+	<button type="submit"
+		ng-bind="submission.state ? 'save' : 'save draft'"
+		ng-disabled="isLoading">
 	</button>
-	<button type="submit">
+	<button type="submit"
+		ng-if="!submission.state"
+		ng-click="submit(editForm)"
+		ng-disabled="isLoading">
 		submit
 	</button>
 

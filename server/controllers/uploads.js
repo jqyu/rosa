@@ -59,4 +59,10 @@ module.exports.create = function (req, res, next) {
 };
 
 module.exports.delete = function(req, res, next) {
+	req.upload.remove()
+		.then(function() {
+			res.sendStatus(200);
+		}, function(err) {
+			next(err);
+		});
 };

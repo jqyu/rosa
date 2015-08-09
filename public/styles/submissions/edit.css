@@ -4,6 +4,16 @@
 	max-width: 432px;
 }
 
+#submission-upload-errors {
+	text-align: center;
+	color: #f66;
+	line-height: 24px;
+	padding: 23px 0px;
+	margin-bottom: 24px;
+	border: 0px solid #f66;
+	border-width: 1px 0;
+}
+
 #submission-uploads .upload-selector {
 	max-width: 432px;
 	margin: 0 auto;

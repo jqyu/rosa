@@ -1,7 +1,9 @@
 var mongoose		= require('mongoose'),
-	crypto			= require('crypto');
+	crypto			= require('crypto'),
+	shortid			= require('shortid');
 
 var UserSchema = new mongoose.Schema({
+	_id: { type: String, unique: true, default: shortid.generate },
 	username: { type: String, match: /^[a-z0-9_-]{3,16}$/, unique: true, required: true },
 	hashedPassword: String,
 	salt: String,

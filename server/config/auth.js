@@ -10,17 +10,18 @@ module.exports.modelAuthenticator = function (Model, name, role) {
 		role = 3;
 	}
 	return function(req, res, next) {
-		var id = req.params.id;
-		Model.findOne({ _id: req.params.id }, function (err, model) {
-			if (err) {
-				res.sendStatus(404);
-			}
-			if (req.user._id === model._user || req.user.role >= role) {
-				console.log('saul goodman');
+		Model.findOne({ _id: req.params.id })
+			.then(function (model) {
+				if (!model) {
+					return res.sendStatus(404);
+				}
+				if (req.user._id !== model._user && req.user.role < role) {
+					return res.sendStatus(401);
+				}
+				req[name] = model;
 				return next();
-			} else {
+			}, function(err) {
 				res.sendStatus(404);
-			}
-		});
+			});
 	}
 }

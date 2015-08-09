@@ -1,6 +1,6 @@
 angular.module('rosaApp')
 
-.directive('upload', function(Uploader) {
+.directive('upload', function(Uploader, $resource) {
 	return {
 		restrict: 'C',
 		scope: {
@@ -9,10 +9,11 @@ angular.module('rosaApp')
 		},
 		templateUrl: 'views/components/upload.html',
 		link: function(scope, element, attrs) {
+
 			scope.tempUrl = null;
 			
 			// monolithic upload handler
-			scope.$watch('model.upload', function(upload) {
+			scope.$watch('model.upload', function(upload, prev) {
 				if (upload && upload._id) {
 					// image uploaded, remove temp url
 					scope.tempUrl = null;

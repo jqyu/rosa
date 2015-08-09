@@ -11,7 +11,7 @@ angular.module('rosaApp', [
 
 		// home page and search
 		.when('/', {
-			templateUrl: 'views/partials/home.html'
+			templateUrl: 'views/partials/submissions/index.html'
 		})
 	
 		// login form
@@ -19,6 +19,7 @@ angular.module('rosaApp', [
 			templateUrl: 'views/partials/auth.html',
 			controller: 'AuthCtrl'
 		})
+		// TODO: implicit redirect ??
 		.when('/login', {
 			redirectTo: '/auth/login'
 		})
@@ -28,6 +29,15 @@ angular.module('rosaApp', [
 
 		// submit form
 		.when('/submit', {
+			templateUrl: 'views/partials/submissions/edit.html',
+			controller: 'SubmissionEditCtrl'
+		})
+
+		// submission
+		.when('/submissions/:id', {
+
+		})
+		.when('/submissions/:id/edit', {
 			templateUrl: 'views/partials/submissions/edit.html',
 			controller: 'SubmissionEditCtrl'
 		})

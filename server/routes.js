@@ -2,13 +2,12 @@
 var path = require('path'),
 	auth = require('./config/auth');
 
-
 module.exports = function(app) {
 
-	var users = require('./controllers/users'),
-		uploads = require('./controllers/uploads');
-
 	// server routes ================================
+
+	var users = require('./controllers/users'),
+		session = require('./controllers/session');
 
 	// authentication routes
 	
@@ -17,7 +16,6 @@ module.exports = function(app) {
 	// check if user exists
 	app.get('/auth/users/:username/exists', users.exists);
 
-	var session = require('./controllers/session');
 
 	// session endpoints 
 	app.route('/auth/session')
@@ -34,12 +32,29 @@ module.exports = function(app) {
 	app.route('/api/users/:username')
 		.get(users.show);
 
-	// create upload
+	// submissions
+	var submissions = require('./controllers/submissions'),
+		Submission = require('./models/submission'),
+		submissionsAuthenticator = auth.modelAuthenticator(Submission, 'submission', 2);
+
+	app.route('/api/submissions')
+		.get(submissions.index)
+		.post(auth.ensureAuthenticated, submissions.process, submissions.create);
+	app.route('/api/submissions/:id')
+		.get(submissions.show)
+		.put(auth.ensureAuthenticated, submissionsAuthenticator, submissions.process, submissions.update)
+		.delete(auth.ensureAuthenticated, submissionsAuthenticator, submissions.delete);
+
+	// uploads
+
+	var uploads = require('./controllers/uploads'),
+		Upload = require('./models/upload'),
+		uploadsAuthenticator = auth.modelAuthenticator(Upload, 'upload', 2);
+
 	app.route('/api/uploads')
 		.post(auth.ensureAuthenticated, uploads.upload, uploads.create);
-	// delete upload
 	app.route('/api/uploads/:id')
-		.delete(uploads.delete);
+		.delete(auth.ensureAuthenticated, uploadsAuthenticator, uploads.delete);
 
 	
 	// frontend routes ==============================
