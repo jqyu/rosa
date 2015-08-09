@@ -9,6 +9,7 @@ var SubmissionSchema = new mongoose.Schema({
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
 
+	thumbnail: String,
 	title: String,
 	description: String,
 	state: Number,
@@ -22,6 +23,7 @@ SubmissionSchema
 			if (err) {
 				return next(err);
 			}
+			submission.thumbnail = submission.uploads[0].path;
 			for (var i = 0; i < submission.uploads.length; i++) {
 				var upload = submission.uploads[i];
 				// TODO: confirm owner of image

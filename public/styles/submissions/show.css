@@ -1,0 +1,53 @@
+#submission-images {
+	padding: 24px;
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+#submission-images img {
+	margin-bottom: 24px;
+}
+
+#submission-info {
+	padding: 24px;
+	max-width: 432px;
+	margin: 23px auto 24px;
+	border-top: 1px solid #000;
+}
+
+#submission-info h4 {
+	margin-bottom: 12px;
+}
+
+#submission-info-date {
+	font-style: italic;
+	text-transform: lowercase;
+	color: #999;
+	font-size: 10px;
+	margin-bottom: 24px;
+}
+
+#submission-info h4,
+#submission-info h5,
+#submission-info-date {
+	text-align: center;
+}
+
+#submission-comments {
+	max-width: 480px;
+	margin: 0 auto;
+}
+
+#submission-comments h4 {
+	text-align: center;
+	padding: 23px 0px;
+	border: 0px solid #000;
+	border-width: 1px 0px;
+}
+
+#submission-comment-form h5 {
+	margin-bottom: 12px;
+}
+#submission-comment-form button {
+	margin-top: 12px;
+}

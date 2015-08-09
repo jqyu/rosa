@@ -62,6 +62,9 @@
 .chat-message {
 	margin-bottom: 12px;
 }
+.chat-message-text p {
+	margin: 0;
+}
 .chat-message-date {
 	float: right;
 	font-family: 'Montserrat', sans-serif;

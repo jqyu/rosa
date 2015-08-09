@@ -2,13 +2,27 @@ var mongoose = require('mongoose'),
 	Submission = require('../models/submission');
 
 module.exports.index = function(req, res, next) {
-	res.sendStatus(200);
+	var offset = req.query.offset || 0,
+		limit = req.query.limit || 10;
+	Submission.find({ state: { $gt: 0 } })
+		.sort('-createdAt')
+		.skip(offset)
+		.limit(limit)
+		.populate('_user')
+		.then(function(submissions) {
+			return res.json(submissions);
+		}, function(err) {
+			return next(err);	
+		});
 };
 
 module.exports.show = function(req, res, next) {
 	Submission.findOne({ _id: req.params.id })
 		.populate('uploads _user')
 		.then(function(submission) {
+				if (!submission) {
+					return res.sendStatus(404);
+				}
 				return res.json(submission);
 			}, function(err) {
 				return next(err);

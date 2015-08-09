@@ -1,0 +1,122 @@
+.submission-preview {
+	position: relative;
+	display: block;
+	background-position: center center;
+	background-size: cover;
+	max-width: 640px;
+	height: 240px;
+	margin: auto;
+	text-align: center;
+	text-decoration: none;
+}
+
+.submission-preview-main {
+	margin: 0px;
+	text-align: left;
+	padding-right: 48px;
+	position: absolute;
+		top: 72px;
+		left: 12px;
+}
+.submission-preview-title {
+	display: inline;
+	background-color: #333;
+	color: #fff;
+	font-size: 16px;
+	padding: 4px 0 0;
+	line-height: 36px;
+	box-shadow: -36px 0 0 #333;
+}
+.submission-preview-byline {
+	display: inline;
+	background-color: #fff;
+	color: #333;
+	font-size: 10px;
+	line-height: 48px;
+	box-shadow: -12px 0 0 #fff;
+}
+.submission-preview-date {
+	background-color: #f66;
+	color: #fff;
+	height: 16px;
+	padding: 0 2px 0 12px;
+	overflow: visible;
+	font-style: italic;
+	text-transform: lowercase;
+	position: absolute;
+		bottom: 36px;
+		right: 0px;
+}
+.submission-preview:hover .submission-preview-title,
+.submission-preview:hover .submission-preview-byline,
+.submission-preview:hover .submission-preview-date {
+	background-color: #4ef;
+	color: #fff	
+}
+.submission-preview:hover .submission-preview-title {
+	box-shadow: -30px 0 0 #4ef;
+}
+.submission-preview:hover .submission-preview-byline {
+	box-shadow: -12px 0 0 #4ef;
+}
+
+.submission-preview-overlay {
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	background-color: #f66;
+	opacity: 0;
+}
+.submission-preview:hover .submission-preview-overlay {
+	opacity: 0.8;
+}
+
+#no-submissions {
+	text-align: center;
+	padding: 120px 24px;
+}
+
+#submission-pagination {
+	position: relative;
+	height: 72px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+}
+
+#submission-pagination-prev,
+#submission-pagination-next{
+	display: block;
+	position: absolute;
+		top: 0;
+	height: 24px;
+	padding: 24px;
+}
+#submission-pagination-prev {
+	left: 0px;
+}
+#submission-pagination-next {
+	right: 0px;
+}
+
+@media (min-width: 528px) {
+	#submission-pagination-prev,
+	#submission-pagination-next {
+		padding: 24px 48px;
+	}
+}
+
+#submission-pagination-page {
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	width: auto;
+	height: auto;
+	padding: 24px;
+	text-align: center;
+}

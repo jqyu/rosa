@@ -76,9 +76,16 @@ angular.module('rosaApp')
 			// NOTE: we're optimistic and assume that the
 			// server doesn't alter the contents
 			saved = function(res) {
-				$location.path('/submissions/'+res._id+'/edit');
+				if (res.state > 0) {
+					$location.path('/submissions/'+res._id);
+				} else {
+					$location.path('/submissions/'+res._id+'/edit');
+				}
 			},
 			updated = function(res) {
+				if (res.state > 0) {
+					$location.path('/submissions/'+res._id);
+				} 
 				$scope.isLoading = false;
 			},
 			error = function(err) {

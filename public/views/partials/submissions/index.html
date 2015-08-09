@@ -1,0 +1,38 @@
+<div id="submissions"
+	 ng-if="submissions.length > 0">
+	<a class="submission-preview"
+		ng-repeat="submission in submissions"
+		ng-href="/submissions/{{submission._id}}"
+		ng-style="{ 'background-image': 'url(uploads/'+submission.thumbnail+')'}">
+		<div class="submission-preview-overlay"></div>
+		<div class="submission-preview-main">
+			<h4 class="submission-preview-title"
+				ng-bind="submission.title">
+			</h4>
+			<br />
+			<h5 class="submission-preview-byline"
+				ng-bind="'by '+submission._user.username">
+			</h5>
+		</div>
+		<div class="submission-preview-date"
+	   ng-bind="submission.createdAt | date : 'MMM d, y h:mma'">
+		</div>
+	</a>
+</div>
+
+<h5 id="no-submissions"
+	ng-if="!submissions || submissions.length === 0">
+	no submissions found	
+</h5>
+
+<div id="submission-pagination"
+	 ng-if="submissions.length > 0">
+	<div id="submission-pagination-page" ng-bind="page">
+	</div>
+	<a id="submission-pagination-prev" ng-href="/page/{{page-1}}" ng-if="page > 1">
+		prev
+	</a>
+	<a id="submission-pagination-next" ng-href="/page/{{page+1}}" ng-if="submissions.length === limit">
+		next
+	</a>
+</div>

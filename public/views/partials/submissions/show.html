@@ -1,0 +1,29 @@
+<div id="submission-images">
+	<img ng-repeat="upload in submission.uploads"
+		ng-src="uploads/{{upload.path}}">
+</div>
+
+<div id="submission-info">
+	<h4 ng-bind="submission.title">
+	</h4>
+	<h5>
+		<a ng-href="/users/{{submission._user.username}}"
+			ng-bind="submission._user.username">
+		</a>
+	</h5>
+	<div id="submission-info-date"
+		ng-bind="submission.createdAt | date : 'MMM d, y h:mma'">
+	</div>
+	<div rich-text="submission.description"></div>
+</div>
+
+<div id="submission-comments">
+	<h4>Comments</h4>
+</div>
+<form id="submission-comment-form">
+	<h5>Leave a comment</h5>
+	<textarea rows="3" placeholder="your art fuckin sucks lol"></textarea>
+	<button type="submit"
+		 ng-bind="'post'">
+	</button>
+</form>

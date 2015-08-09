@@ -11,7 +11,12 @@ angular.module('rosaApp', [
 
 		// home page and search
 		.when('/', {
-			templateUrl: 'views/partials/submissions/index.html'
+			templateUrl: 'views/partials/submissions/index.html',
+			controller: 'SubmissionIndexCtrl'
+		})
+		.when('/page/:page', {
+			templateUrl: 'views/partials/submissions/index.html',
+			controller: 'SubmissionIndexCtrl'
 		})
 	
 		// login form
@@ -35,7 +40,8 @@ angular.module('rosaApp', [
 
 		// submission
 		.when('/submissions/:id', {
-
+			templateUrl: 'views/partials/submissions/show.html',
+			controller: 'SubmissionShowCtrl'
 		})
 		.when('/submissions/:id/edit', {
 			templateUrl: 'views/partials/submissions/edit.html',
