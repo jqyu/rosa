@@ -29,8 +29,8 @@
 			ng-bind="comment.createdAt | date : 'dd.mm.yy h:mma'">
 		</h5>
 		<h5>
-			<a ng-href="/users/{{submission._user.username}}"
-				ng-bind="submission._user.username">
+			<a ng-href="/users/{{comment._user.username}}"
+				ng-bind="comment._user.username">
 			</a>
 		</h5>
 		<div rich-text="comment.text"></div>
