@@ -48,7 +48,7 @@ require('./server/config/pass');
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/dist'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // routes ============================================

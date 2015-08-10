@@ -80,7 +80,7 @@ module.exports = function(app) {
 		}
 
 		// load our public/index.html file
-		res.sendFile('views/index.html', { root: path.join(__dirname, '../public') });
+		res.sendFile('views/index.html', { root: path.join(__dirname, '../dist') });
 	});
 
 };

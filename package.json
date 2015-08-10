@@ -19,6 +19,8 @@
   },
   "devDependencies": {
     "broccoli": "^0.16.5",
+    "broccoli-concat": "0.0.13",
+    "broccoli-merge-trees": "^0.2.2",
     "broccoli-sass": "^0.6.6",
     "broccoli-uglify-js": "^0.1.3"
   }

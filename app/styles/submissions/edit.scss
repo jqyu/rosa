@@ -20,9 +20,11 @@
 }
 
 @media (min-width: 528px) {
-	padding: 0px 48px;
+	#submission-uploads {
+		padding: 0px 48px;
+	}
 }
 
 #submission-edit-form button {
 	margin-top: 24px;	
-}.
+}
