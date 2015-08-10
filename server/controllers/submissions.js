@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+	User = require('../models/user'),
 	Submission = require('../models/submission');
 
 module.exports.index = function(req, res, next) {
@@ -17,8 +18,9 @@ module.exports.index = function(req, res, next) {
 };
 
 module.exports.show = function(req, res, next) {
-	var populate = '_user uploads';
-	if (req.query.includes && req.query.includes.indexOf('comments') > -1) {
+	var populate = '_user uploads',
+		includeComments = req.query.includes && req.query.includes.indexOf('comments') > -1;
+	if (includeComments) {
 		populate += ' comments';
 	}
 	Submission.findOne({ _id: req.params.id })
@@ -27,7 +29,17 @@ module.exports.show = function(req, res, next) {
 				if (!submission) {
 					return res.sendStatus(404);
 				}
-				return res.json(submission);
+				if (includeComments) {
+					// deep populate comment users
+					User.populate(submission, 'comments._user', function(err, result) {
+						if (err) {
+							return res.json(submission);
+						}
+						return res.json(result);
+					});
+				} else {
+					return res.json(submission);
+				}
 			}, function(err) {
 				return next(err);
 			});
