@@ -55,4 +55,10 @@ angular.module('rosaApp', [
 
 	$locationProvider.html5Mode(true);
 
+})
+
+.run(function ($rootScope, $location) {
+	$rootScope.$on('$routeChangeSuccess', function() {
+		ga('send', 'pageview', $location.path());
+	});
 });
