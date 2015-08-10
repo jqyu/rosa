@@ -1,6 +1,8 @@
 angular.module('rosaApp')
 
-.factory('Auth', function Auth($location, $rootScope, $http, $resource, $cookieStore) {
+.factory('Auth', 
+['$location', '$rootScope', '$http', '$resource', '$cookieStore',
+function Auth($location, $rootScope, $http, $resource, $cookieStore) {
 
 	// fetch auth session from cookie
 	$rootScope.currentUser = $cookieStore.get('user') || null;
@@ -56,4 +58,4 @@ angular.module('rosaApp')
 			});
 		}	
 	};
-});
+}]);

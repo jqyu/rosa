@@ -1,6 +1,9 @@
 angular.module('rosaApp')
 
-.directive('upload', function(Uploader, $resource) {
+.directive('upload',
+['Uploader', '$resource',
+function(Uploader, $resource) {
+
 	return {
 		restrict: 'C',
 		scope: {
@@ -59,4 +62,4 @@ angular.module('rosaApp')
 			};
 		}
 	}
-});
+}]);

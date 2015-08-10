@@ -1,6 +1,8 @@
 angular.module('rosaApp')
 
-.controller('ChatCtrl', function($rootScope, $scope) {
+.controller('ChatCtrl',
+['$rootScope', '$scope',
+function($rootScope, $scope) {
 
 	var socketUrl = '//localhost:8080/chat';
 
@@ -149,4 +151,4 @@ angular.module('rosaApp')
 		}
 	});
 
-});
+}]);

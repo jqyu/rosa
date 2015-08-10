@@ -1,6 +1,9 @@
 angular.module('rosaApp')
 
-.controller('SubmissionEditCtrl', function($scope, $location, $resource, $routeParams) {
+.controller('SubmissionEditCtrl',
+['$scope', '$location', '$resource', '$routeParams',
+function($scope, $location, $resource, $routeParams) {
+
 	if (!$scope.currentUser) {
 		$location.path('/login');
 	}
@@ -121,4 +124,4 @@ angular.module('rosaApp')
 			}
 		}
 	}
-});
+}]);

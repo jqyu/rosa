@@ -1,6 +1,8 @@
 angular.module('rosaApp')
 
-.controller('SubmissionShowCtrl', function($scope, $resource, $routeParams, $location) {
+.controller('SubmissionShowCtrl',
+['$scope', '$resource', '$routeParams', '$location',
+function($scope, $resource, $routeParams, $location) {
 
 	var Submission = $resource('/api/submissions/:id'),
 		Comments = $resource('/api/submissions/:sid/comments'),
@@ -83,4 +85,4 @@ angular.module('rosaApp')
 					$location.path('/');
 				});
 	};
-});
+}]);

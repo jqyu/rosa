@@ -1,6 +1,8 @@
 angular.module('rosaApp')
 
-.directive('uploadSelector', function() {
+.directive('uploadSelector',
+function() {
+
 	return {
 		scope: {
 			multiple: '@',

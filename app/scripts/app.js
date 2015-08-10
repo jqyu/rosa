@@ -5,7 +5,9 @@ angular.module('rosaApp', [
 	'ngSanitize'
 ])
 
-.config(function ($routeProvider, $locationProvider) {
+.config(
+['$routeProvider', '$locationProvider',
+function ($routeProvider, $locationProvider) {
 	
 	$routeProvider
 
@@ -55,10 +57,14 @@ angular.module('rosaApp', [
 
 	$locationProvider.html5Mode(true);
 
-})
+}])
 
-.run(function ($rootScope, $location) {
+.run(
+['$rootScope', '$Location',
+function ($rootScope, $location) {
+
 	$rootScope.$on('$routeChangeSuccess', function() {
 		ga('send', 'pageview', $location.path());
 	});
-});
+
+}]);

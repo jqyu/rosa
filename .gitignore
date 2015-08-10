@@ -9,8 +9,8 @@
 /tmp/*
 
 # uploaded assets
-/public/uploads/*
-!/public/uploads/.gitkeep
+/uploads/*
+!/uploads/.gitkeep
 
 # vim temporary files 
 .*.swp

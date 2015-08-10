@@ -1,6 +1,7 @@
 angular.module('rosaApp')
 
-.directive('richText', function() {
+.directive('richText',
+function() {
 	return {
 		template: '<p ng-repeat="lines in paragraphs" ng-bind-html="parse(lines)"></p>',
 		scope: {

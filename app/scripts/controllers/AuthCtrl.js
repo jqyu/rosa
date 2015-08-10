@@ -1,6 +1,8 @@
 angular.module('rosaApp')
 
-.controller('AuthCtrl', function($scope, $routeParams, $location, $http, Auth) {
+.controller('AuthCtrl',
+['$scope', '$routeParams', '$location', '$http', 'Auth',
+function($scope, $routeParams, $location, $http, Auth) {
 
 	$scope.activeForm = $routeParams.activeForm;
 	// changes form without triggering refresh
@@ -140,4 +142,4 @@ angular.module('rosaApp')
 		});
 
 	};
-});
+}]);

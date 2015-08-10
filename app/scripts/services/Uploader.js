@@ -1,6 +1,8 @@
 angular.module('rosaApp')
 
-.service('Uploader', function($rootScope) {
+.service('Uploader',
+['$rootScope',
+function($rootScope) {
 
 	this.queue = [];
 
@@ -55,4 +57,4 @@ angular.module('rosaApp')
 		}
 	};
 
-});
+}]);

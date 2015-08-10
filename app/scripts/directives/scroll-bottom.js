@@ -1,6 +1,8 @@
 angular.module('rosaApp')
 
-.directive('scrollBottom', function($timeout) {
+.directive('scrollBottom',
+['$timeout',
+function($timeout) {
 	return {
 		scope: {
 			scrollBottom: '='
@@ -33,4 +35,4 @@ angular.module('rosaApp')
 			scrollToBottom();
 		}
 	};
-});
+}]);

@@ -5,7 +5,7 @@ var fs		= require('fs'),
 	Upload  = require('../models/upload');
 
 var rootPath = path.join(__dirname, '../../'),
-	uploadsPath = path.join(rootPath, 'public/uploads');
+	uploadsPath = path.join(rootPath, 'uploads');
 
 // TODO: FIX EVERYTHING THIS IS ALL SO FUCKING TERRIBLE
 
