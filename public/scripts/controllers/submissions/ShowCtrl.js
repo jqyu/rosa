@@ -28,6 +28,7 @@ angular.module('rosaApp')
 				text: $scope.commentText
 			}, function(comment) {
 				$scope.submission.comments.push(comment);
+				$scope.commentText = null;
 				$scope.isCommenting = false;
 			}, function(err) {
 				$scope.isCommenting = false;
