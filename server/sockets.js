@@ -22,6 +22,9 @@ module.exports = function(io, sessionMiddleware) {
 				chatSession = null,
 
 				initChatSession = function() {
+					if (!userId) {
+						return Promise.resolve(null);
+					}
 					if (userStore[userId]) {
 						return Promise.resolve(userStore[userId]);
 					}
