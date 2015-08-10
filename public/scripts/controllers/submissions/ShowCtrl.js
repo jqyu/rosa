@@ -35,4 +35,11 @@ angular.module('rosaApp')
 			})
 		};
 	};
+
+	$scope.delete = function() {
+		Submission.delete({ id: $scope.submission._id },
+				function() {
+					$location.path('/');
+				});
+	};
 });

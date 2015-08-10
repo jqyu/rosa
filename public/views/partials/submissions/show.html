@@ -11,8 +11,20 @@
 			ng-bind="submission._user.username">
 		</a>
 	</h5>
-	<div id="submission-info-date"
-		ng-bind="submission.createdAt | date : 'MMM d, y h:mma'">
+	<div id="submission-info-options">
+		<div id="submission-info-date"
+			ng-bind="submission.createdAt | date : 'MMM d, y h:mma'">
+		</div>
+		<div id="submission-info-controls"
+			ng-if="currentUser.role > 2 || currentUser._id === submission._user._id">
+			<a ng-href="/submissions/{{submission._id}}/edit">
+				edit
+			</a>
+			&nbsp; &nbsp;
+			<a href ng-click="delete()">
+				delete
+			</a>
+		</div>
 	</div>
 	<div rich-text="submission.description"></div>
 </div>
