@@ -12,6 +12,9 @@
 /uploads/*
 !/uploads/.gitkeep
 
+# build directory
+/public/*
+
 # vim temporary files 
 .*.swp
 .*.swo

@@ -60,7 +60,7 @@ function ($routeProvider, $locationProvider) {
 }])
 
 .run(
-['$rootScope', '$Location',
+['$rootScope', '$location',
 function ($rootScope, $location) {
 
 	$rootScope.$on('$routeChangeSuccess', function() {
