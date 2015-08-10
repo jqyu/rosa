@@ -17,13 +17,9 @@
 		</div>
 		<div id="submission-info-controls"
 			ng-if="currentUser.role > 2 || currentUser._id === submission._user._id">
-			<a ng-href="/submissions/{{submission._id}}/edit">
-				edit
-			</a>
+			<a ng-href="/submissions/{{submission._id}}/edit">edit</a>
 			&nbsp; &nbsp;
-			<a href ng-click="delete()">
-				delete
-			</a>
+			<a href ng-click="delete()">delete</a>
 		</div>
 	</div>
 	<div rich-text="submission.description"></div>
@@ -45,7 +41,17 @@
 				ng-bind="comment._user.username">
 			</a>
 		</h5>
-		<div rich-text="comment.text"></div>
+		<div rich-text="comment.text" ng-if="editingId !== comment._id"></div>
+		<div class="submission-comment-edit-form" ng-if="editingId === comment._id">
+			<textarea ng-model="comment.editText" rows="3"></textarea>
+			<button ng-click="editComment(comment)" ng-disabled="isEditing || !comment.editText" ng-bind="isEditing ? 'saving' : 'save'"></button>
+		</div>
+		<div class="submission-comment-options" ng-if="currentUser.role > 2 || currentUser._id === comment._user._id">
+			<a href ng-click="editCommentFocus(comment)" ng-if="editingId !== comment._id">edit</a>
+			<a href ng-click="editCommentFocus(null)" ng-if="editingId === comment._id">cancel</a>
+			&nbsp; &nbsp;
+			<a href ng-click="deleteComment(comment)">delete</a>
+		</div>
 	</div>
 </div>
 <form id="submission-comment-form"

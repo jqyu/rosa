@@ -63,6 +63,15 @@
 	color: #ddd;
 	font-size: 10px;
 }
+.comment-edit-form {
+	margin-bottom: 12px;
+}
+.submission-comment-options {
+	font-style: italic;
+	text-transform: lowercase;
+	color: #999;
+	font-size: 10px;
+}
 
 #submission-comment-form button {
 	margin-top: 12px;
