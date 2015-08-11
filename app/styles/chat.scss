@@ -74,9 +74,7 @@
 	color: #ccc;
 }
 .chat-message-sender {
-	font-family: 'Montserrat', sans-serif;
 	font-size: 10px;
-	text-transform: uppercase;
 	letter-spacing: 0.2em;
 }
 #chat-post {
@@ -123,11 +121,11 @@
 	padding: 48px;
 	border-left: 1px solid #f66;
 	background-color: #fff;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 10px;
-	text-transform: uppercase;
-	letter-spacing: 0.3em;
+	@include font-label;
 	overflow: auto;
+}
+#chat-sessions h5 {
+	@include font-label;
 }
 #chat-sessions-preview {
 	position: absolute;

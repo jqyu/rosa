@@ -34,7 +34,7 @@
 	<div class="submission-comment"
 		ng-repeat="comment in submission.comments">
 		<h5 class="submission-comment-date"
-			ng-bind="comment.createdAt | date : 'dd.mm.yy h:mma'">
+			ng-bind="comment.createdAt | date : 'd.M.yy h:mma'">
 		</h5>
 		<h5>
 			<a ng-href="/users/{{comment._user.username}}"

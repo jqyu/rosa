@@ -14,7 +14,11 @@
 			<div class="chat-message"
 				ng-repeat="messageChunk in messageChunks">
 				<div class="chat-message-date" ng-bind="messageChunk[0].sentAt | date : 'mediumTime'"></div>
-				<div class="chat-message-sender" ng-bind="messageChunk[0].session.username"></div>
+				<h5 class="chat-message-sender">
+					<a ng-href="{{messageChunk[0].session.role ? '/users/'+messageChunk[0].session.username : null}}"
+						ng-bind="messageChunk[0].session.username">
+					</a>
+				</h5>
 				<div class="chat-message-text" ng-repeat="message in messageChunk" rich-text="message.message"></div>
 			</div>
 
@@ -33,10 +37,12 @@
 			<div id="chat-sessions-preview"
 				ng-bind="chat.sessions.length + (chat.sessions.length > 1 ? ' users' : ' user') + ' online'">
 			</div>
-			<div class="chat-session"
-				ng-repeat="session in chat.sessions"
-				ng-bind="session.username">
-			</div>
+			<h5 class="chat-session"
+				ng-repeat="session in chat.sessions">
+				<a ng-href="{{session.role > 0 ? '/users/'+session.username : null}}"
+				   ng-bind="session.username">
+				</a>
+			</h5>
 		</div>
 		<!-- do an ng-repeat here -->
 	</div>
