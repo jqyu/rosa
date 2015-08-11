@@ -24,25 +24,26 @@ passport.use(new LocalStrategy(
 		// all usernames should be lowercase
 		username = username && username.toLowerCase();
 
-		User.findOne({ username: username }, function (err, user) {
-			if (err) {
+		User.findOne({ username: username })
+			.select('+hashedPassword +salt')
+			.then(function (user) {
+				if (!user) {
+					return done(null, false, {
+						'errors': {
+							'username': 'not registered' 
+						}
+					});
+				}
+				if (!user.authenticate(password)) {
+					return done(null, false, {
+						'errors': {
+							'password': 'incorrect'
+						}
+					});
+				}
+				return done(null, user);
+			}, function(err) {
 				return done(err);
-			}
-			if (!user) {
-				return done(null, false, {
-					'errors': {
-						'username': 'not registered' 
-					}
-				});
-			}
-			if (!user.authenticate(password)) {
-				return done(null, false, {
-					'errors': {
-						'password': 'incorrect'
-					}
-				});
-			}
-			return done(null, user);
-		});
+			});
 	}
 ));
