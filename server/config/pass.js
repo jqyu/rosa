@@ -20,6 +20,10 @@ passport.deserializeUser(function(id, done) {
 // use strategy
 passport.use(new LocalStrategy(
 	function(username, password, done) {
+
+		// all usernames should be lowercase
+		username = username && username.toLowerCase();
+
 		User.findOne({ username: username }, function (err, user) {
 			if (err) {
 				return done(err);

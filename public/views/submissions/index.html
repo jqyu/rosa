@@ -21,18 +21,18 @@
 </div>
 
 <h5 id="no-submissions"
-	ng-if="!submissions || submissions.length === 0">
-	no submissions found	
+	ng-if="!submissions || submissions.length === 0"
+	ng-bind="isLoading ? 'Loading' : 'No Submissions Found'">
 </h5>
 
 <div id="submission-pagination"
 	 ng-if="submissions.length > 0">
 	<div id="submission-pagination-page" ng-bind="page">
 	</div>
-	<a id="submission-pagination-prev" ng-href="/page/{{page-1}}" ng-if="page > 1">
+	<a id="submission-pagination-prev" ng-href="{{rootPath}}page/{{page-1}}" ng-if="page > 1">
 		prev
 	</a>
-	<a id="submission-pagination-next" ng-href="/page/{{page+1}}" ng-if="submissions.length === limit">
+	<a id="submission-pagination-next" ng-href="{{rootPath}}page/{{page+1}}" ng-if="submissions.length === limit">
 		next
 	</a>
 </div>

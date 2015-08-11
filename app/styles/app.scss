@@ -1,11 +1,57 @@
+// variables and mixins
+
+$baseline: 24px;
+
+$color-text: #333;
+$color-light: #999;
+$color-lighter: #ddd;
+$color-bg: #FFF;
+$color-primary: #4EF;
+$color-secondary: #F66;
+
+$width-forms: 432px;
+$width-submissions: 640px;
+
+$font-stack-display: 'Montserrat', sans-serif;
+$font-stack-copy: 'Libre Baskerville', serif;
+
+
+@mixin font-label {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.4em;
+}
+
+@mixin font-secondary {
+	font-style: italic;
+	text-transform: lowercase;
+}
+
+@mixin font-small {
+	color: #999;
+	font-size: 10px;
+}
+
+@mixin font-section-header {
+	font-size: 14px;
+	text-align: center;
+	padding: 23px 0px;
+	border: 0px solid $color-text;
+	border-width: 1px 0px;
+}
+
+
 @import 'base';
 @import 'nav';
 @import 'chat';
 
-@import 'auth';
+@import 'components/upload';
+
+@import 'pages/auth';
 
 @import 'submissions/edit';
 @import 'submissions/index';
 @import 'submissions/show';
 
-@import 'upload';
+@import 'users/show';

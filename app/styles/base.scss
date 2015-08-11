@@ -104,7 +104,8 @@ label .input-validation {
 
 input,
 textarea,
-button {
+button,
+.btn {
 	display: block;
 }
 
@@ -149,6 +150,11 @@ button {
 	line-height: 46px;
 	text-transform: uppercase;
 	letter-spacing: 0.5em;
+}
+
+.btn {
+	width: auto;
+	text-decoration: none;
 }
 
 .btn:hover,

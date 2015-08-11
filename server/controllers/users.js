@@ -38,6 +38,27 @@ module.exports.show = function (req, res, next) {
 		});
 };
 
+module.exports.update = function (req, res, next) {
+	var username = req.params.username.toLowerCase();
+
+	if (req.user.username !== username && req.user.role <= 2) {
+		return next(new Error('You don\'t have permission to edit this uer'));
+	}
+
+	User.findOne({ username: username })
+		.then(function (user) {
+			user.biography = req.body.biography;
+			return user.save();
+		}, function (err) {
+			return Promise.reject(err);
+		})
+		.then(function (user) {
+			return res.json(user.info);
+		}, function (err) {
+			return next(err);
+		});
+};
+
 module.exports.exists = function (req, res, next) {
 	var username = req.params.username.toLowerCase();
 

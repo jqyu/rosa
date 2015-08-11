@@ -13,17 +13,18 @@ function ($routeProvider, $locationProvider) {
 
 		// home page and search
 		.when('/', {
-			templateUrl: 'views/partials/submissions/index.html',
-			controller: 'SubmissionIndexCtrl'
+			templateUrl: 'views/pages/home.html',
+			controller: 'HomeCtrl'
 		})
+
 		.when('/page/:page', {
-			templateUrl: 'views/partials/submissions/index.html',
-			controller: 'SubmissionIndexCtrl'
+			templateUrl: 'views/pages/home.html',
+			controller: 'HomeCtrl'
 		})
 	
 		// login form
 		.when('/auth/:activeForm', {
-			templateUrl: 'views/partials/auth.html',
+			templateUrl: 'views/pages/auth.html',
 			controller: 'AuthCtrl'
 		})
 		// TODO: implicit redirect ??
@@ -36,18 +37,32 @@ function ($routeProvider, $locationProvider) {
 
 		// submit form
 		.when('/submit', {
-			templateUrl: 'views/partials/submissions/edit.html',
+			templateUrl: 'views/submissions/edit.html',
 			controller: 'SubmissionEditCtrl'
 		})
 
 		// submission
 		.when('/submissions/:id', {
-			templateUrl: 'views/partials/submissions/show.html',
+			templateUrl: 'views/submissions/show.html',
 			controller: 'SubmissionShowCtrl'
 		})
 		.when('/submissions/:id/edit', {
-			templateUrl: 'views/partials/submissions/edit.html',
+			templateUrl: 'views/submissions/edit.html',
 			controller: 'SubmissionEditCtrl'
+		})
+
+		// profile
+		.when('/users/:username', {
+			templateUrl: 'views/users/show.html',
+			controller: 'UsersShowCtrl'
+		})
+		.when('/users/:username/page/:page', {
+			templateUrl: 'views/users/show.html',
+			controller: 'UsersShowCtrl'
+		})
+		.when('/users/:username/edit', {
+			templateUrl: 'views/users/edit.html',
+			controller: 'UsersEditCtrl'
 		})
 
 		// TODO: 404

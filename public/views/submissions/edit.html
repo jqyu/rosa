@@ -51,5 +51,10 @@
 		ng-disabled="isLoading">
 		submit
 	</button>
+	<a class="btn"
+		ng-href="/submissions/{{submission._id}}"
+		ng-if="submission._id"
+		ng-bind="submission.state ? 'view' : 'preview'">
+	</a>
 
 </form>

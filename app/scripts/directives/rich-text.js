@@ -18,7 +18,7 @@ function() {
 						.replace('&', '&amp;')
 						.replace('<', '&lt;')
 						.replace('>', '&gt;')
-						.replace('\n', '<br />');
+						.replace('\n', '<br>');
 			}
 		}
 	};

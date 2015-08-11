@@ -5,8 +5,9 @@ var mongoose		= require('mongoose'),
 var UserSchema = new mongoose.Schema({
 	_id: { type: String, unique: true, default: shortid.generate },
 	username: { type: String, match: /^[a-z0-9_-]{3,16}$/, unique: true, required: true },
-	hashedPassword: String,
-	salt: String,
+	biography: String,
+	hashedPassword: { type: String, select: false },
+	salt: { type: String, select: false },
 	// roles:
 	//  -1 : disabled
 	//   0 : guest
@@ -37,6 +38,7 @@ UserSchema
 		return {
 			'_id':		this._id,
 			'username':	this.username,
+			'biography': this.biography,
 			'role':		this.role
 		};
 	});

@@ -30,7 +30,8 @@ module.exports = function(app) {
 	
 	// get user by username 
 	app.route('/api/users/:username')
-		.get(users.show);
+		.get(users.show)
+		.put(auth.ensureAuthenticated, users.update);
 
 	// submissions
 	var submissions = require('./controllers/submissions'),

@@ -4,8 +4,29 @@ var mongoose = require('mongoose'),
 
 module.exports.index = function(req, res, next) {
 	var offset = req.query.offset || 0,
-		limit = req.query.limit || 10;
-	Submission.find({ state: { $gt: 0 } })
+		limit = req.query.limit || 10,
+		query = {};
+
+	switch(req.query.type) {
+		case 'drafts':
+			query.state = 0;
+			break;
+		case 'featured':
+			query.state = 2;
+			break;
+		case 'all':
+			query.state = { $gt: -1 };
+			break;
+		default:
+			query.state = { $gt: 0 };
+			break;
+	}
+
+	if (req.query.userId) {
+		query._user = req.query.userId;
+	}
+
+	Submission.find(query)
 		.sort('-createdAt')
 		.skip(offset)
 		.limit(limit)

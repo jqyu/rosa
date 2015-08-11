@@ -35,6 +35,7 @@ module.exports.create = function(req, res, next) {
 
 module.exports.update = function(req, res, next) {
 	req.comment.text = req.body.text;
+	req.comment.updatedAt = Date.now();
 	req.comment.save()
 		.then(function(comment) {
 				return res.json(comment);

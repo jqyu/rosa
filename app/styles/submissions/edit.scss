@@ -1,21 +1,21 @@
 #submission-uploads {
 	padding: 0px 24px;
 	margin: 0 auto;
-	max-width: 432px;
+	max-width: $width-forms;
 }
 
 #submission-upload-errors {
 	text-align: center;
-	color: #f66;
+	color: $color-secondary;
 	line-height: 24px;
 	padding: 23px 0px;
 	margin-bottom: 24px;
-	border: 0px solid #f66;
+	border: 0 solid $color-secondary;
 	border-width: 1px 0;
 }
 
 #submission-uploads .upload-selector {
-	max-width: 432px;
+	max-width: $width-forms;
 	margin: 0 auto;
 }
 
@@ -25,6 +25,7 @@
 	}
 }
 
-#submission-edit-form button {
+#submission-edit-form button,
+#submission-edit-form .btn {
 	margin-top: 24px;	
 }

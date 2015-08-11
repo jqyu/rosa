@@ -1,0 +1,18 @@
+<div id="profile" ng-if="isLoaded">
+
+	<h1 id="profile-username"
+		ng-bind="user.username">
+	</h1>
+
+	<div id="profile-biography" rich-text="user.biography"></div>
+
+	<div id="profile-options" ng-if="currentUser.role >= 2 || currentUser._id === user._id">
+		<a ng-href="users/{{user.username}}/edit">edit</a>
+	</div>
+
+</div>
+
+<div id="profile-submissions">
+	<h3>Submissions</h3>
+	<submissions ng-if="isLoaded" query="query" rootPath="/users/{{user.username}}/" page="page"></submissions>
+</div>

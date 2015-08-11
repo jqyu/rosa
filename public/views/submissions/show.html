@@ -16,7 +16,7 @@
 			ng-bind="submission.createdAt | date : 'MMM d, y h:mma'">
 		</div>
 		<div id="submission-info-controls"
-			ng-if="currentUser.role > 2 || currentUser._id === submission._user._id">
+			ng-if="currentUser.role >= 2 || currentUser._id === submission._user._id">
 			<a ng-href="/submissions/{{submission._id}}/edit">edit</a>
 			&nbsp; &nbsp;
 			<a href ng-click="delete()">delete</a>
@@ -46,7 +46,7 @@
 			<textarea ng-model="comment.editText" rows="3"></textarea>
 			<button ng-click="editComment(comment)" ng-disabled="isEditing || !comment.editText" ng-bind="isEditing ? 'saving' : 'save'"></button>
 		</div>
-		<div class="submission-comment-options" ng-if="currentUser.role > 2 || currentUser._id === comment._user._id">
+		<div class="submission-comment-options" ng-if="currentUser.role >= 2 || currentUser._id === comment._user._id">
 			<a href ng-click="editCommentFocus(comment)" ng-if="editingId !== comment._id">edit</a>
 			<a href ng-click="editCommentFocus(null)" ng-if="editingId === comment._id">cancel</a>
 			&nbsp; &nbsp;

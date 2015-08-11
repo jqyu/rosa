@@ -40,10 +40,7 @@
 }
 
 #submission-comments h4 {
-	text-align: center;
-	padding: 23px 0px;
-	border: 0px solid #000;
-	border-width: 1px 0px;
+	@include font-section-header;
 	margin-bottom: 12px;
 }
 

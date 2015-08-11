@@ -1,0 +1,28 @@
+<form id="profile"
+	  name="profileForm"
+	  ng-submit="save(profileForm)">
+
+	<h1 id="profile-username"
+		ng-bind="user.username">
+	</h1>
+	
+	<label>
+		<div class="input-label">
+			biography
+		</div>
+		<textarea
+			placeholder="Tell me about yourself :^]"
+			rows="8"
+			ng-model="user.biography">
+		</textarea>
+	</label>
+
+	<button type="submit"
+		 ng-disabled="isSaving || isLoading"
+		 ng-bind="isSaving ? 'Saving' : 'Save'">
+	</button>
+
+	<a class="btn" ng-href="users/{{user.username}}">cancel</a>
+</form>
+
+

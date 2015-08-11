@@ -3,7 +3,7 @@
 	display: block;
 	background-position: center center;
 	background-size: cover;
-	max-width: 640px;
+	max-width: $width-submissions;
 	height: 240px;
 	margin: auto;
 	text-align: center;
@@ -20,44 +20,44 @@
 }
 .submission-preview-title {
 	display: inline;
-	background-color: #333;
-	color: #fff;
+	background-color: $color-text;
+	color: $color-bg;
 	font-size: 16px;
 	padding: 4px 0 0;
 	line-height: 36px;
-	box-shadow: -36px 0 0 #333;
+	box-shadow: -36px 0 0 $color-text;
+	min-width: 36px;
 }
 .submission-preview-byline {
 	display: inline;
-	background-color: #fff;
-	color: #333;
+	background-color: $color-bg;
+	color: $color-text;
 	font-size: 10px;
 	line-height: 48px;
-	box-shadow: -12px 0 0 #fff;
+	box-shadow: -12px 0 0 $color-bg;
 }
 .submission-preview-date {
-	background-color: #f66;
-	color: #fff;
+	background-color: $color-secondary;
+	color: $color-bg;
 	height: 16px;
 	padding: 0 2px 0 12px;
 	overflow: visible;
-	font-style: italic;
-	text-transform: lowercase;
 	position: absolute;
 		bottom: 36px;
 		right: 0px;
+	@include font-secondary;
 }
 .submission-preview:hover .submission-preview-title,
 .submission-preview:hover .submission-preview-byline,
 .submission-preview:hover .submission-preview-date {
-	background-color: #4ef;
-	color: #fff	
+	background-color: $color-primary;
+	color: $color-bg	
 }
 .submission-preview:hover .submission-preview-title {
-	box-shadow: -30px 0 0 #4ef;
+	box-shadow: -30px 0 0 $color-primary;
 }
 .submission-preview:hover .submission-preview-byline {
-	box-shadow: -12px 0 0 #4ef;
+	box-shadow: -12px 0 0 $color-primary;
 }
 
 .submission-preview-overlay {
@@ -66,7 +66,7 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-	background-color: #f66;
+	background-color: $color-secondary;
 	opacity: 0;
 }
 .submission-preview:hover .submission-preview-overlay {
@@ -81,10 +81,10 @@
 #submission-pagination {
 	position: relative;
 	height: 72px;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 10px;
-	text-transform: uppercase;
-	letter-spacing: 0.3em;
+	margin: 0 auto;
+	width: 100%;
+	max-width: $width-submissions;
+	@include font-label;
 }
 
 #submission-pagination-prev,
@@ -94,19 +94,16 @@
 		top: 0;
 	height: 24px;
 	padding: 24px;
+	@media (min-width: 528px) {
+		padding: 24px 48px;
+	}
+
 }
 #submission-pagination-prev {
 	left: 0px;
 }
 #submission-pagination-next {
 	right: 0px;
-}
-
-@media (min-width: 528px) {
-	#submission-pagination-prev,
-	#submission-pagination-next {
-		padding: 24px 48px;
-	}
 }
 
 #submission-pagination-page {
