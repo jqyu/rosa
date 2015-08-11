@@ -85,10 +85,7 @@ form h5 {
 }
 
 label {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 10px;
-	text-transform: uppercase;
-	letter-spacing: 0.5em;
+	@include font-label;
 	color: #999;
 }
 
@@ -129,6 +126,13 @@ input:hover {
 
 input:focus {
 	border-color: #4EF;
+}
+
+input[type="text"].display {
+	@include font-display;
+}
+input[type="password"] {
+	letter-spacing: 0.4em;
 }
 
 textarea {

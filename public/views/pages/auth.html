@@ -14,7 +14,7 @@
 			<div class="input-validation error"
 				 ng-bind="loginForm.errors.username">
 			</div>
-			<input type="text" ng-model="loginForm.user.username">
+			<input type="text" ng-model="loginForm.user.username" class="display">
 		</labeL>
 
 		<label>
@@ -52,6 +52,7 @@
 				ng-bind="signupForm.errors.username || signupForm.validations.username || signupForm.checking ">
 			</div>
 			<input type="text"
+				   class="display"
 				   ng-model="signupForm.user.username"
 				   ng-model-options="{ debounce: 400 }"
 				   ng-change="validateUsername(signupForm)"

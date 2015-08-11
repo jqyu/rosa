@@ -23,6 +23,13 @@ $font-stack-copy: 'Libre Baskerville', serif;
 	letter-spacing: 0.4em;
 }
 
+@mixin font-display {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+}
+
 @mixin font-secondary {
 	font-style: italic;
 	text-transform: lowercase;
