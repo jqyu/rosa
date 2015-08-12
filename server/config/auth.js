@@ -5,6 +5,13 @@ module.exports.ensureAuthenticated = function (req, res, next) {
 	res.sendStatus(401);
 };
 
+module.exports.ensureMod = function (req, res, next) {
+	if (req.isAuthenticated() && req.user.role >= 2) {
+		return next();
+	}
+	res.sendStatus(401);
+};
+
 module.exports.modelAuthenticator = function (Model, name, role) {
 	if (!role) {
 		role = 3;

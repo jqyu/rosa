@@ -8,7 +8,7 @@ angular.module('rosaApp', [
 .config(
 ['$routeProvider', '$locationProvider',
 function ($routeProvider, $locationProvider) {
-	
+
 	$routeProvider
 
 		// home page and search
@@ -16,8 +16,23 @@ function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
-
 		.when('/page/:page', {
+			templateUrl: 'views/pages/home.html',
+			controller: 'HomeCtrl'
+		})
+		.when('/recent', {
+			templateUrl: 'views/pages/home.html',
+			controller: 'HomeCtrl'
+		})
+		.when('/recent/:page', {
+			templateUrl: 'views/pages/home.html',
+			controller: 'HomeCtrl'
+		})
+		.when('/drafts', {
+			templateUrl: 'views/pages/home.html',
+			controller: 'HomeCtrl'
+		})
+		.when('/drafts/:page', {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})

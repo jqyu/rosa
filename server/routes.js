@@ -45,6 +45,12 @@ module.exports = function(app) {
 		.get(submissions.show)
 		.put(auth.ensureAuthenticated, submissionsAuthenticator, submissions.process, submissions.update)
 		.delete(auth.ensureAuthenticated, submissionsAuthenticator, submissions.delete);
+	app.route('/api/submissions/:id/hearts')
+		.post(auth.ensureAuthenticated, submissions.heart)
+		.delete(auth.ensureAuthenticated, submissions.unheart);
+	app.route('/api/submissions/:id/feature')
+		.post(auth.ensureMod, submissions.feature)
+		.delete(auth.ensureMod, submissions.unfeature);
 
 	// comments
 	var comments = require('./controllers/comments'),

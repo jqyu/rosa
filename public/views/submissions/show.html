@@ -17,13 +17,22 @@
 		</div>
 		<div id="submission-info-controls"
 			ng-if="currentUser.role >= 2 || currentUser._id === submission._user._id">
+			<a href ng-click="toggleFeatured()" ng-bind="submission.state === 2 ? 'unfeature' : 'feature'" ng-if="(submission.state > 0) && currentUser.role >= 2"></a>
 			<a ng-href="/submissions/{{submission._id}}/edit">edit</a>
-			&nbsp; &nbsp;
 			<a href ng-click="delete()">delete</a>
 		</div>
 	</div>
 	<div rich-text="submission.description"></div>
+	<div id="submission-hearts">
+		<div class="heart" ng-class="{ 'active' : hearted }" ng-click="toggleHeart();"></div>
+		<div id="submission-hearts-names">
+			<span ng-bind="submission.heartsCount ? submission.heartsCount+' users' : 'Be the first to'"></span>
+			appreciate this piece
+		</div>
+	</div>
 </div>
+
+<!-- TODO: move comments to a directive ?? -->
 
 <div id="submission-comments">
 	<h4>Comments</h4>
@@ -62,7 +71,7 @@
 		<textarea
 			ng-model="commentText"
 			rows="3"
-			placeholder="your art fuckin sucks lol"></textarea>
+			placeholder="Say something nice :~]"></textarea>
 	</label>
 	<button type="submit"
 		 ng-disabled="isCommenting || !commentText || !currentUser"

@@ -1,0 +1,18 @@
+#home-nav {
+	text-align: center;
+	max-width: $width-submissions;
+	margin: 0 auto 24px;
+	border: 0 solid $color-text;
+	border-width: 1px 0;
+	padding: 23px 0px;
+	font-size: 10px;
+}
+
+#home-nav a {
+	display: inline-block;
+	margin: 0px 12px;
+}
+
+#home-nav a.active {
+	color: #f66;
+}

@@ -26,12 +26,25 @@
 	color: #999;
 	font-size: 10px;
 	margin-bottom: 24px;
+
+	a {
+		display: inline-block;
+		margin: 0px 12px;
+	}
 }
 
 #submission-info h4,
 #submission-info h5,
 #submission-info-date {
 	text-align: center;
+}
+
+#submission-hearts {
+	text-align: center;
+}
+#submission-hearts-names {
+	@include font-secondary;
+	@include font-small;
 }
 
 #submission-comments {

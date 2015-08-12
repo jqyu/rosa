@@ -180,6 +180,39 @@ button:disabled {
 	background-color: #fff;
 }
 
+.heart {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	font-size: 1.2em;
+	width: 0.5em;
+	height: 0.75em;
+	background-color: $color-text;
+	border-top-left-radius: 50% 33%;
+	border-top-right-radius: 50% 33%;
+	transform: rotate(45deg);
+}
+
+.heart:before {
+	content: '';
+	position: absolute;
+		bottom: 0;
+		left: -0.25em;
+	display: block;
+	width: 0.25em;
+	height: 0.5em;
+	background-color: $color-text;
+	border-top-left-radius: 100% 50%;
+	border-bottom-left-radius: 100% 50%;
+}
+
+.heart.active, .heart:hover {
+	background-color: $color-secondary;
+}
+.heart.active:before, .heart:hover:before {
+	background-color: $color-primary;
+}
+
 #site-footer {
 	text-align: center;
 	padding: 48px 24px;

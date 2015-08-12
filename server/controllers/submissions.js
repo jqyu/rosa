@@ -67,9 +67,7 @@ module.exports.show = function(req, res, next) {
 };
 
 module.exports.process = function(req, res, next) {
-	var state = (req.body.state === 0 || req.body.state === 1) ?
-					req.body.state : 0,
-		title = req.body.title,
+	var title = req.body.title,
 		description = req.body.description
 		uploads = [];
 
@@ -86,10 +84,13 @@ module.exports.process = function(req, res, next) {
 	}
 
 	req.payload = {
-		state: state,
 		title: title,
 		description: description,
 		uploads: uploads
+	}
+
+	if (req.body.state === 1) {
+		req.payload.state = 1;
 	}
 
 	next();
@@ -136,3 +137,54 @@ module.exports.delete = function(req, res, next) {
 				next(err);
 			});
 };
+
+var changeField = function(cb) {
+	return function(req, res, next) {
+		Submission.findOne({ _id: req.params.id })
+			.then(function(submission) {
+					cb(submission, req);
+					submission.save();
+				}, function(err) {
+					return Promise.reject(err);
+				})
+			.then(function (submission) {
+					res.sendStatus(200);
+				}, function(err) {
+					return next(err);
+				});
+	}
+}
+
+// yo dawg i heard you like callbacks
+// i'm sorry i just had to do this it was too tempting
+module.exports.heart = changeField(
+	function (submission, req) {
+		var idx = submission.hearts.indexOf(req.user._id);
+		if (idx < 0) {
+			submission.hearts.push(req.user._id);
+			return submission.save();
+		} else {
+			return Promise.resolve();
+		}
+	});
+
+module.exports.unheart = changeField(
+	function (submission, req) {
+		var idx = submission.hearts.indexOf(req.user._id);
+		if (idx > -1) {
+			submission.hearts.splice(idx, 1);
+			return submission.save();
+		} else {
+			return Promise.resolve();
+		}
+	});
+
+module.exports.feature = changeField(
+	function (submission) {
+		submission.state = 2;
+	});
+
+module.exports.unfeature = changeField(
+	function (submission) {
+		submission.state = 1;
+	});

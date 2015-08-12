@@ -6,7 +6,7 @@ function ($resource) {
 	return {
 		scope: {
 			query: '=',
-			rootPath: '&',
+			rootPath: '@',
 			page: '='
 		},
 		templateUrl: 'views/submissions/index.html',
@@ -14,7 +14,7 @@ function ($resource) {
 
 			scope.isLoading = true;
 			scope.page = parseInt(scope.page, 10) || 1;
-			scope.limit = attrs.limit || 12;
+			scope.limit = parseInt(attrs.limit, 10) || 12;
 			scope.offset = (scope.page-1) * scope.limit;
 
 			var Submissions = $resource('/api/submissions'),

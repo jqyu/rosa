@@ -12,14 +12,25 @@ var SubmissionSchema = new mongoose.Schema({
 	thumbnail: String,
 	title: String,
 	description: String,
-	state: Number,
+	state: { type: Number, default: 0 },
 
 	uploads: [{ type: String, ref: 'Upload' }],
-	comments: [{ type: String, ref: 'Comment' }]
+
+	comments: [{ type: String, ref: 'Comment' }],
+	commentsCount: Number,
+
+	hearts: [{ type: String, ref: 'User' }],
+	heartsCount: Number
+
 });
 
 SubmissionSchema
 	.pre('save', function(next) {
+		this.commentsCount = this.commets ? this.comments.length : 0;
+		this.heartsCount = this.hearts ? this.hearts.length : 0;
+		if (!this.isModified('uploads')) {
+			return next();
+		}
 		this.populate('uploads', function(err, submission) {
 			if (err) {
 				return next(err);

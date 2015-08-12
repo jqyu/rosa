@@ -10,6 +10,8 @@ function ($scope, $routeParams, $resource, $location) {
 
 	$scope.isLoading = true;
 	$scope.isLoaded = false;
+	$scope.username = $routeParams.username;
+	$scope.page = $routeParams.page;
 
 	$scope.user = User.get({ username: $routeParams.username },
 			function (user) {
@@ -18,7 +20,6 @@ function ($scope, $routeParams, $resource, $location) {
 				$scope.query = {
 					userId: user._id
 				};
-				$scope.page = $routeParams.page;
 			}, function (err) {
 				$location.path('/');
 			});
