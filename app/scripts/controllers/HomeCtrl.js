@@ -8,13 +8,13 @@ function ($scope, $routeParams, $location) {
 
 	switch ($scope.type) {
 		case 'recent':
-			$scope.rootPath = '/recent';
+			$scope.rootPath = '/recent/';
 			$scope.query = null;
 			break;
 		case 'drafts':
 			$scope.rootPath = '/drafts';
 			if (!$scope.currentUser) {
-				$location.path('/login');
+				$location.path('/login/');
 			} else {
 				$scope.query = { type: 'drafts', userId: $scope.currentUser._id };
 			}
