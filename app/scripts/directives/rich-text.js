@@ -33,8 +33,8 @@ function() {
 						.replace(/\*(.*?)\*/g, '<em>$1</em>')
 						.replace(/~~(.*?)~~/g, '<del>$1</del>')
 						// probably should add a nofollow here...
-						.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
-						.replace(/(^|\s)((http:\/\/|https:\/\/)\S+)/g, '$1<a href="$2">$2</a>')
+						.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
+						.replace(/(^|\s)((http:\/\/|https:\/\/)\S+)/g, '$1<a href="$2" target="_blank">$2</a>')
 
 						.split('\n').join('<br>');
 			}
