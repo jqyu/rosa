@@ -99,7 +99,7 @@ function ($rootScope, $location) {
 
 	$rootScope.imageParams = {
 		submissionPreview: '?w=640&h=240&fit=crop&crop=faces',
-		submission: '?w=640'
+		submission: '?w=640&fit=max'
 	};
 
 }]);
