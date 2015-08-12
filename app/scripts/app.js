@@ -24,7 +24,7 @@ function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
-		.when('/recent/:page', {
+		.when('/recent/page/:page', {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
@@ -32,7 +32,7 @@ function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
-		.when('/drafts/:page', {
+		.when('/drafts/page/:page', {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
