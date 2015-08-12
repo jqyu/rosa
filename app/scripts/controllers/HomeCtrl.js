@@ -11,14 +11,6 @@ function ($scope, $routeParams, $location) {
 			$scope.rootPath = '/featured/';
 			$scope.query = { type: 'featured' };
 			break;
-		case 'drafts':
-			$scope.rootPath = '/drafts';
-			if (!$scope.currentUser) {
-				$location.path('/login/');
-			} else {
-				$scope.query = { type: 'drafts', userId: $scope.currentUser._id };
-			}
-			break;
 		default:
 			$scope.type = 'recent';
 			$scope.rootPath = '/';

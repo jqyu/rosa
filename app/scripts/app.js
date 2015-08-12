@@ -28,14 +28,6 @@ function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
-		.when('/drafts', {
-			templateUrl: 'views/pages/home.html',
-			controller: 'HomeCtrl'
-		})
-		.when('/drafts/page/:page', {
-			templateUrl: 'views/pages/home.html',
-			controller: 'HomeCtrl'
-		})
 	
 		// login form
 		.when('/auth/:activeForm', {
@@ -54,6 +46,14 @@ function ($routeProvider, $locationProvider) {
 		.when('/submit', {
 			templateUrl: 'views/submissions/edit.html',
 			controller: 'SubmissionEditCtrl'
+		})
+		.when('/drafts', {
+			templateUrl: 'views/pages/drafts.html',
+			controller: 'DraftsCtrl'
+		})
+		.when('/drafts/page/:page', {
+			templateUrl: 'views/pages/drafts.html',
+			controller: 'DraftsCtrl'
 		})
 
 		// submission

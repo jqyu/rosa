@@ -1,3 +1,9 @@
+<h2 id="sub-nav">
+	<a href="/drafts">drafts</a>
+	<a href="/submit" ng-class="{ 'active': !submission._id }">new</a>
+	<a href class="active" ng-if="submission._id">edit</a>
+</h2>
+
 <div id="submission-uploads">
 	<h5 id="submission-upload-errors"
 		ng-if="editForm.errors.uploads"
@@ -8,11 +14,13 @@
 		 ng-model="upload"
 		 clear-action="clearUpload(upload)">
 	</div>
-	<upload-selector
-		multiple
-		select-text="{{submission.uploads.length ? 'Add Images' : 'Select Images'}}"
-		select-action="pushUploads(files)">
-	</uploader-selecctor>
+	<div id="submission-main-selector">
+		<upload-selector
+			multiple
+			select-text="{{submission.uploads.length ? 'Add Images' : 'Select Images'}}"
+			select-action="pushUploads(files)">
+		</uploader-selecctor>
+	</div>
 </div>
 
 <form id="submission-edit-form"

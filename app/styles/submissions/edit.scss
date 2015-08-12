@@ -1,7 +1,7 @@
 #submission-uploads {
 	padding: 0px 24px;
 	margin: 0 auto;
-	max-width: $width-forms;
+	max-width: $width-submissions;
 }
 
 #submission-upload-errors {
@@ -14,9 +14,9 @@
 	border-width: 1px 0;
 }
 
-#submission-uploads .upload-selector {
+#submission-main-selector {
 	max-width: $width-forms;
-	margin: 0 auto;
+	margin: 24px auto;
 }
 
 @media (min-width: 528px) {
