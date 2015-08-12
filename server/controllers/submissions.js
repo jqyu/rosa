@@ -142,8 +142,11 @@ var changeField = function(cb) {
 	return function(req, res, next) {
 		Submission.findOne({ _id: req.params.id })
 			.then(function(submission) {
-					cb(submission, req);
-					submission.save();
+					if (cb(submission, req)) {
+						submission.save();
+					} else {
+						return Promise.resolve();
+					}
 				}, function(err) {
 					return Promise.reject(err);
 				})
@@ -162,10 +165,9 @@ module.exports.heart = changeField(
 		var idx = submission.hearts.indexOf(req.user._id);
 		if (idx < 0) {
 			submission.hearts.push(req.user._id);
-			return submission.save();
-		} else {
-			return Promise.resolve();
+			return true;
 		}
+		return false;
 	});
 
 module.exports.unheart = changeField(
@@ -173,18 +175,25 @@ module.exports.unheart = changeField(
 		var idx = submission.hearts.indexOf(req.user._id);
 		if (idx > -1) {
 			submission.hearts.splice(idx, 1);
-			return submission.save();
-		} else {
-			return Promise.resolve();
+			return true;
 		}
+		return false;
 	});
 
 module.exports.feature = changeField(
 	function (submission) {
-		submission.state = 2;
+		if (submission.state !== 2) {
+			submission.state = 2;
+			return true;
+		}
+		return false;
 	});
 
 module.exports.unfeature = changeField(
 	function (submission) {
-		submission.state = 1;
+		if (submission.state === 2) {
+			submission.state = 1;
+			return true;
+		}
+		return false;
 	});
