@@ -25,9 +25,9 @@
 	ng-bind="isLoading ? 'Loading' : 'No Submissions Found'">
 </h5>
 
-<div id="submission-pagination"
+<h5 id="submission-pagination"
 	 ng-if="submissions.length > 0">
-	<div id="submission-pagination-page" ng-bind="page">
+	<div id="submission-pagination-page" ng-bind="'page ' + page">
 	</div>
 	<a id="submission-pagination-prev" ng-href="{{rootPath}}page/{{page-1}}" ng-if="page > 1">
 		prev
@@ -35,4 +35,4 @@
 	<a id="submission-pagination-next" ng-href="{{rootPath}}page/{{page+1}}" ng-if="submissions.length === limit">
 		next
 	</a>
-</div>
+</h5>
