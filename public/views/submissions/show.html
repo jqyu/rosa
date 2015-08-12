@@ -1,6 +1,6 @@
 <div id="submission-images">
 	<img ng-repeat="upload in submission.uploads"
-		ng-src="uploads/{{upload.path}}">
+		ng-src="{{config.imageHost+'/'+upload.path+imageParams.submission}}">
 </div>
 
 <div id="submission-info">

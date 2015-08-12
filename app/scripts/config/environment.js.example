@@ -1,0 +1,12 @@
+angular.module('rosaApp')
+
+.run(
+['$rootScope',
+function ($rootScope) {
+
+	$rootScope.config = {
+		chatHost: '//localhost:8080/chat',
+		imageHost: '/uploads'
+	};
+
+}]);

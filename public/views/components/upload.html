@@ -1,5 +1,5 @@
 <img ng-if="tempUrl" ng-src="{{tempUrl}}">
-<img ng-if="model.upload._id" ng-src="uploads/{{model.upload.path}}">
+<img ng-if="model.upload._id" ng-src="{{config.imageHost+'/'+model.upload.path+imageParams.submission}}">
 <div class="upload-overlay"
 	 ng-if="!model.isQueued">
 	<div class="upload-controls">

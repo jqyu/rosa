@@ -1,8 +1,8 @@
 angular.module('rosaApp')
 
 .directive('submissions',
-['$resource',
-function ($resource) {
+['$rootScope', '$resource',
+function ($rootScope, $resource) {
 	return {
 		scope: {
 			query: '=',
@@ -11,6 +11,9 @@ function ($resource) {
 		},
 		templateUrl: 'views/submissions/index.html',
 		link: function(scope, element, attrs) {
+
+			scope.config = $rootScope.config;
+			scope.imageParams = $rootScope.imageParams;
 
 			scope.isLoading = true;
 			scope.page = parseInt(scope.page, 10) || 1;

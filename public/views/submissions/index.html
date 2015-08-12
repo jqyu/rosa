@@ -3,7 +3,7 @@
 	<a class="submission-preview"
 		ng-repeat="submission in submissions"
 		ng-href="/submissions/{{submission._id}}"
-		ng-style="{ 'background-image': 'url(uploads/'+submission.thumbnail+')'}">
+		ng-style="{ 'background-image': 'url('+config.imageHost+'/'+submission.thumbnail+imageParams.submissionPreview+')'}">
 		<div class="submission-preview-overlay"></div>
 		<div class="submission-preview-main">
 			<h4 class="submission-preview-title"

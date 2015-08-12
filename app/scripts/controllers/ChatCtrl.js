@@ -4,7 +4,7 @@ angular.module('rosaApp')
 ['$rootScope', '$scope',
 function($rootScope, $scope) {
 
-	var socketUrl = '//localhost:8080/chat';
+	var socketUrl = $scope.chatHost;
 
 	$scope.open = false;
 	$scope.socket = io.connect(socketUrl, {

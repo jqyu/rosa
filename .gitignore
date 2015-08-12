@@ -3,6 +3,7 @@
 
 # secret configs
 /config/environment.js
+/app/scripts/config/environment.js
 
 # temporary files
 *.log

@@ -1,8 +1,8 @@
 angular.module('rosaApp')
 
 .directive('upload',
-['Uploader', '$resource',
-function(Uploader, $resource) {
+['$rootScope', 'Uploader', '$resource',
+function($rootScope, Uploader, $resource) {
 
 	return {
 		restrict: 'C',
@@ -12,6 +12,9 @@ function(Uploader, $resource) {
 		},
 		templateUrl: 'views/components/upload.html',
 		link: function(scope, element, attrs) {
+
+			scope.config = $rootScope.config;
+			scope.imageParams = $rootScope.imageParams;
 
 			scope.tempUrl = null;
 			

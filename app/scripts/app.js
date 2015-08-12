@@ -97,4 +97,9 @@ function ($rootScope, $location) {
 		ga('send', 'pageview', $location.path());
 	});
 
+	$rootScope.imageParams = {
+		submissionPreview: '?w=640&h=240&fit=crop&crop=faces',
+		submission: '?w=640'
+	};
+
 }]);
