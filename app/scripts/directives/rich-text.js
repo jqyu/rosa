@@ -30,11 +30,11 @@ function() {
 						.replace(/\\\)/g, '&#41;')
 
 						// arbitrary markdown
-						.replace(/\*(.+?)\*/g, '<em>$1</em>')
-						.replace(/~~(.+?)~~/g, '<del>$1</del>')
+						.replace(/\*(.*?)\*/g, '<em>$1</em>')
+						.replace(/~~(.*?)~~/g, '<del>$1</del>')
 						// probably should add a nofollow here...
 						.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
-						.replace(/((http:\/\/|https:\/\/)\S+)/g, '<a href="$1">$1</a>')
+						.replace(/(^|\s)((http:\/\/|https:\/\/)\S+)/g, '$1<a href="$2">$2</a>')
 
 						.split('\n').join('<br>');
 			}
