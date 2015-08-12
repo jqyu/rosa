@@ -20,11 +20,11 @@ function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
-		.when('/recent', {
+		.when('/featured', {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
-		.when('/recent/page/:page', {
+		.when('/featured/page/:page', {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})

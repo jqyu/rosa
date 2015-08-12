@@ -7,9 +7,9 @@ function ($scope, $routeParams, $location) {
 	$scope.type = $location.path().split('/')[1];
 
 	switch ($scope.type) {
-		case 'recent':
-			$scope.rootPath = '/recent/';
-			$scope.query = null;
+		case 'featured':
+			$scope.rootPath = '/featured/';
+			$scope.query = { type: 'featured' };
 			break;
 		case 'drafts':
 			$scope.rootPath = '/drafts';
@@ -20,9 +20,9 @@ function ($scope, $routeParams, $location) {
 			}
 			break;
 		default:
-			$scope.type = 'featured';
+			$scope.type = 'recent';
 			$scope.rootPath = '/';
-			$scope.query = { type: 'featured' };
+			$scope.query = null;
 			break;
 	}
 
