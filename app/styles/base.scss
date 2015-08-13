@@ -214,14 +214,14 @@ button:disabled {
 }
 
 @include keyframes(heart-animation) {
-	0% { transform: rotate(45deg) translate(0,0em) scale(1,1); }
-	50% { transform: rotate(45deg) translate(0,0.05em) scale(1.1,1.1); }
-	100% { transform: rotate(45deg) translate(0,0em) scale(1,1); }
+	0% { transform: rotate(45deg) translate(0em,0em) scale(1,1); }
+	30% { transform: rotate(45deg) translate(0.02em,0.02em) scale(1.1,1.1); }
+	100% { transform: rotate(45deg) translate(0em,0em) scale(1,1); }
 }
 
 @include keyframes(heart-before-animation) {
 	0% { transform: scale(1,1); }
-	50% { transform: scale(1.1,1.1); }
+	30% { transform: scale(1.1,1.1); }
 	100% { transform: scale(1,1); }
 }
 

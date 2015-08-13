@@ -60,6 +60,10 @@ module.exports = function(app) {
 	app.route('/api/submissions/:id/comments')
 		.post(auth.ensureAuthenticated, comments.create);
 
+	// temporary until more fully-featured feed is introduced
+	app.route('/api/comments')
+		.get(auth.ensureAuthenticated, comments.index);
+
 	app.route('/api/comments/:id')
 		.put(auth.ensureAuthenticated, commentsAuthenticator, comments.update)
 		.delete(auth.ensureAuthenticated, commentsAuthenticator, comments.delete);

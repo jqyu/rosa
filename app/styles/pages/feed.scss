@@ -1,0 +1,17 @@
+#no-feed-items {
+	padding: 96px 24px;
+	text-align: center;
+}
+
+.feed-item {
+	margin: 0 auto;
+	padding: 12px 24px;
+	max-width: $width-forms;
+	overflow: hidden;
+}
+
+.feed-item-label {
+	@include font-secondary;
+	@include font-small;
+	margin: 12px 0;
+}

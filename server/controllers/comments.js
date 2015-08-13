@@ -6,6 +6,24 @@ var reject = function(err) {
 	return Promse.reject(err);
 };
 
+module.exports.index = function(req, res, next) {
+	var offset = req.query.offset || 0,
+		limit = req.query.limit || 10,
+		query = { _parentUser: req.user._id, _user: { $ne: req.user._id } };
+
+	Comment.find(query)
+		.sort('-createdAt')
+		.skip(offset)
+		.limit(limit)
+		.populate({ path: '_parent', select: '_user title' })
+		.populate('_user')
+		.then(function(comments) {
+			return res.json(comments);
+		}, function(err) {
+			return next(err);
+		});
+};
+
 module.exports.create = function(req, res, next) {
 
 	var comment = new Comment({

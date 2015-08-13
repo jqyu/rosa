@@ -28,6 +28,15 @@ function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/pages/home.html',
 			controller: 'HomeCtrl'
 		})
+		
+		.when('/feed', {
+			templateUrl: 'views/pages/feed.html',
+			controller: 'FeedCtrl'
+		})
+		.when('/feed/page/:page', {
+			templateUrl: 'views/pages/feed.html',
+			controller: 'FeedCtrl'
+		})
 	
 		// login form
 		.when('/auth/:activeForm', {

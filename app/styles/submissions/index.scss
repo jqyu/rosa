@@ -76,47 +76,4 @@
 #no-submissions {
 	text-align: center;
 	padding: 120px 24px;
-}
-
-#submission-pagination {
-	position: relative;
-	height: 72px;
-	margin: 24px auto;
-	width: 100%;
-	max-width: $width-submissions;
-	@include font-label;
-	border: 0 solid $color-text;
-	border-width: 1px 0;
-}
-
-#submission-pagination-prev,
-#submission-pagination-next{
-	display: block;
-	position: absolute;
-		top: 0;
-	height: 24px;
-	padding: 23px 24px;
-	text-decoration: none;
-	@media (min-width: 528px) {
-		padding: 23px 48px;
-	}
-
-}
-#submission-pagination-prev {
-	left: 0px;
-}
-#submission-pagination-next {
-	right: 0px;
-}
-
-#submission-pagination-page {
-	position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	width: auto;
-	height: auto;
-	padding: 23px;
-	text-align: center;
-}
+} 

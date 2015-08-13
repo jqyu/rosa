@@ -1,0 +1,38 @@
+<h2 id="sub-nav">
+	<a href="/">recent</a>
+	<a href="/featured">featured</a>
+	<a href="/feed" class="active">feed</a>
+</h2>
+
+<h5 id="no-feed-items"
+	 ng-if="feed.length < 1"
+	 ng-bind="isLoading ? 'Loading' : 'No items found'">
+</h5>
+
+<div class="feed-item"
+	ng-repeat="item in feed">
+	<h5 class="comment-date"
+		ng-bind="item.createdAt | date : 'd.M.yy h:mma'">
+	</h5>
+	<h5>
+		<a ng-href="/users/{{item._user.username}}"
+			ng-bind="item._user.username">
+		</a>
+	</h5>
+	<div rich-text="item.text"></div>
+	<div class="feed-item-label">
+		in <a ng-href="/submissions/{{item._parent._id}}" ng-bind="item._parent.title"></a>
+	</div>
+</div>
+
+<h5 class="pagination"
+	ng-if="feed.length > 0">
+	<div class="pagination-page" ng-bind="'page ' + page">
+	</div>
+	<a class="pagination-prev" ng-href="/feed/page/{{page-1}}" ng-if="page > 1">
+		prev
+	</a>
+	<a class="pagination-next" ng-href="/feed/page/{{page+1}}" ng-if="feed.length === limit">
+		next
+	</a>
+</h5>

@@ -40,9 +40,9 @@
 		 ng-if="submission.comments.length < 1">
 		No comments yet
 	</h5>
-	<div class="submission-comment"
+	<div class="comment"
 		ng-repeat="comment in submission.comments">
-		<h5 class="submission-comment-date"
+		<h5 class="comment-date"
 			ng-bind="comment.createdAt | date : 'd.M.yy h:mma'">
 		</h5>
 		<h5>
@@ -51,11 +51,11 @@
 			</a>
 		</h5>
 		<div rich-text="comment.text" ng-if="editingId !== comment._id"></div>
-		<div class="submission-comment-edit-form" ng-if="editingId === comment._id">
+		<div class="comment-edit-form" ng-if="editingId === comment._id">
 			<textarea ng-model="comment.editText" rows="3"></textarea>
 			<button ng-click="editComment(comment)" ng-disabled="isEditing || !comment.editText" ng-bind="isEditing ? 'saving' : 'save'"></button>
 		</div>
-		<div class="submission-comment-options" ng-if="currentUser.role >= 2 || currentUser._id === comment._user._id">
+		<div class="comment-options" ng-if="currentUser.role >= 2 || currentUser._id === comment._user._id">
 			<a href ng-click="editCommentFocus(comment)" ng-if="editingId !== comment._id">edit</a>
 			<a href ng-click="editCommentFocus(null)" ng-if="editingId === comment._id">cancel</a>
 			&nbsp; &nbsp;

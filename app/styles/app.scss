@@ -71,12 +71,15 @@ $font-stack-copy: 'Libre Baskerville', serif;
 
 
 @import 'base';
+@import 'pagination';
 @import 'nav';
 @import 'chat';
 
 @import 'components/upload';
+@import 'components/comment';
 
 @import 'pages/auth';
+@import 'pages/feed';
 
 @import 'submissions/edit';
 @import 'submissions/index';
