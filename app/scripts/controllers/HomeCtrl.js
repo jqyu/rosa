@@ -11,7 +11,7 @@ function ($scope, $routeParams, $location) {
 	} else {
 		$scope.type = 'recent';
 		$scope.query = {};
-		$scope.rootPath = '/featured/';
+		$scope.rootPath = '/';
 	}
 
 	$scope.page = $routeParams.page;
