@@ -48,6 +48,27 @@ $font-stack-copy: 'Libre Baskerville', serif;
 	border-width: 1px 0px;
 }
 
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	-moz-animation: #{$str};
+	animation: #{$str};
+}
+
 
 @import 'base';
 @import 'nav';

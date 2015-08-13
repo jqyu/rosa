@@ -43,6 +43,9 @@
 #submission-hearts {
 	text-align: center;
 }
+#submission-hearts .heart {
+	font-size: 1.6em;
+}
 #submission-hearts-names {
 	@include font-secondary;
 	@include font-small;

@@ -213,6 +213,25 @@ button:disabled {
 	background-color: $color-primary;
 }
 
+@include keyframes(heart-animation) {
+	0% { transform: rotate(45deg) translate(0,0em) scale(1,1); }
+	50% { transform: rotate(45deg) translate(0,0.05em) scale(1.1,1.1); }
+	100% { transform: rotate(45deg) translate(0,0em) scale(1,1); }
+}
+
+@include keyframes(heart-before-animation) {
+	0% { transform: scale(1,1); }
+	50% { transform: scale(1.1,1.1); }
+	100% { transform: scale(1,1); }
+}
+
+.heart.active {
+	@include animation('heart-animation 0.2s ease-in-out');
+}
+.heart.active:before {
+	@include animation('heart-before-animation 0.2s ease-in-out');
+}
+
 #site-footer {
 	text-align: center;
 	padding: 48px 24px;
