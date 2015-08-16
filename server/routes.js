@@ -2,7 +2,7 @@
 var path = require('path'),
 	auth = require('./config/auth');
 
-module.exports = function(app) {
+module.exports = function(app, config) {
 
 	// server routes ================================
 
@@ -81,7 +81,12 @@ module.exports = function(app) {
 
 	
 	// frontend routes ==============================
-	
+
+	// set up view engine for static version
+	var statics = require('./controllers/statics');
+	app.set('views', './server/views');
+	app.set('view engine', 'jade');
+
 	// route to handle all angular requests
 	app.get('*', function(req, res) {
 
@@ -89,9 +94,21 @@ module.exports = function(app) {
 		if(req.user) {
 			res.cookie('user', JSON.stringify(req.user.info));
 		}
+	
+		// determine whether or not to serve static page	
+		var fragment = req.query._escaped_fragment_,
+			userAgent = req.headers['user-agent'];
+		if (fragment === '') {
+			fragment = req.url.split('?')[0];
+		}
 
-		// load our public/index.html file
-		res.sendFile('views/index.html', { root: path.join(__dirname, '../dist') });
+		if (!fragment) {
+			// load our public/index.html file
+			return res.sendFile('views/index.html', { root: path.join(__dirname, '../dist') });
+		}
+
+		// serve static version of page =====
+		return statics(req, res, fragment, config);
 	});
 
 };

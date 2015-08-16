@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		title= title
+		base(href="/")
+		meta(name="og:title", content=title)
+		meta(name="og:description", content="Hello friends! rosa.wtf is still under heavy development please be gentle ]:")
+		meta(name="og:image", content="#{image}?w=1200&h=630&fit=crop&crop=faces")
+	body
+		h1= title
+		a(href="/") recent
+		a(href="/featured") featured
+		div(id="submissions")
+			each submission in submissions
+				div(class="submission")
+					h2
+						a(href="/submissions/#{submission._id}")= submission.title
+					a(href="/users/#{submission._user.username}")= submission._user.username
+		div(id="pagination")
+			if (page>1)
+				a(href="#{rootPath}/page/#{page-1}") prev
+			span= "page "+page
+			if (submissions.length==limit)
+				a(href="#{rootPath}/page/#{page+1}") next
+		nav
+			a(href="/") rosa.wtf 

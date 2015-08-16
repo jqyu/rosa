@@ -48,11 +48,11 @@ require('./server/config/pass');
 app.use(passport.initialize());
 app.use(passport.session());
 
+// serve static version of site to crawlers
+// routes ============================================
 app.use(express.static(__dirname + '/dist'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
-
-// routes ============================================
-require('./server/routes')(app); // configure our routes
+require('./server/routes')(app, config); // configure our routes
 
 // start app ==========================================
 // startup our app at http://localhost:8080

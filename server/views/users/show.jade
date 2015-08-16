@@ -1,0 +1,24 @@
+doctype html
+html
+	head
+		title!=username+"'s profile"
+		base(href="/")
+		meta(name="og:title", content="#{username}'s profile")
+		meta(name="og:description", content=biography)
+		meta(name="og:image", content="#{image}?w=1200&h=630&fit=crop&crop=faces")
+	body
+		article
+			h1=username
+			p=biography
+		div(id="submissions")
+			each submission in submissions
+				h2(class="submission")
+					a(href="/submissions/#{submission._id}")= submission.title
+		div(id="pagination")
+			if (page>1)
+				a(href="/users/#{username}/page/#{page-1}") prev
+			span= "page "+page
+			if (submissions.length==limit)
+				a(href="/users/#{username}/page/#{page+1}") next
+		nav
+			a(href="/") rosa.wtf

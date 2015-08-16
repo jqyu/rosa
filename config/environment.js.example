@@ -3,6 +3,9 @@ module.exports = {
 	db: {
 		url: "mongodb://localhost/rosa"
 	},
+	hostNames: {
+		image: '/uploads'
+	},
 	session: {
 		secret: "hush!"
 	}

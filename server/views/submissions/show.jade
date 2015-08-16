@@ -1,0 +1,25 @@
+doctype html
+html
+	head
+		title= title
+		base(href="/")
+		meta(name="og:title", content=title)
+		meta(name="og:description", content="description")
+		meta(name="og:image", content!="#{uploads[0].src}?w=1200&h=630&fit=crop&crop=faces")
+	body
+		article
+			h1= title
+			h2
+				a(href="/users/#{_user.username}")= _user.username
+			each upload in uploads
+				img(src=upload.src)
+			p= description
+		div(id="comments")
+			h4 "Comments"
+			each comment in comments
+				div(class="comment")
+					h4
+						a(href="users/#{comment._user.username}")= comment._user.username
+					div= comment.text
+		nav
+			a(href="/") rosa.wtf
