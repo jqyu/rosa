@@ -7,7 +7,7 @@ function ($scope, $routeParams, $location) {
 	if ($location.path().split('/')[1] === 'featured') {
 	   	$scope.type = 'featured';
 		$scope.query = { type: 'featured' };
-		$scope.rootpath = '/featured/';   
+		$scope.rootPath = '/featured/';   
 	} else {
 		$scope.type = 'recent';
 		$scope.query = {};
