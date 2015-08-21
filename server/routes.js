@@ -98,7 +98,7 @@ module.exports = function(app, config) {
 		// determine whether or not to serve static page	
 		var fragment = req.query._escaped_fragment_,
 			userAgent = req.headers['user-agent'];
-		if (fragment === '' || userAgent.indexOf('facebookexternalhit') > -1 || userAgent.indexOf('Embedly') > -1) {
+		if (fragment === '' || userAgent.indexOf('facebookexternalhit') > -1 || userAgent.indexOf('Embedly') > -1 || userAgent.indexOf('reddit') > -1) {
 			fragment = req.url.split('?')[0];
 		}
 
